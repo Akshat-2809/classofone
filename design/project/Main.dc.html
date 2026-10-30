@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Class of One — Home</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500..900&amp;family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&amp;family=Caveat:wght@500;700&amp;family=Spline+Sans+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#FBFCFE}
+a{color:#17223A}a:hover{color:#23463B}
+.co *{box-sizing:border-box}
+.co{--paper:#FBFCFE;--rule:#DCE6F4;--margin:#E35D52;--ink:#17223A;--ink2:#47546B;--ink3:#5E6A80;--chalk:#23463B;--chalk2:#2E5A4C;--onChalk:#EAF2EC;--blue:#2F5F9E;--red:#C8483F;--green:#2F6B52;--mg:clamp(14px,3vw,48px);--disp:'Gabarito','Atkinson Hyperlegible',system-ui,sans-serif;--body:'Atkinson Hyperlegible',system-ui,-apple-system,sans-serif;--hand:'Caveat',cursive;--mono:'Spline Sans Mono',ui-monospace,monospace;--ease:cubic-bezier(.2,.75,.1,1);--spring:cubic-bezier(.34,1.5,.64,1);font-family:var(--body);color:var(--ink);background:var(--paper);font-size:17px;line-height:1.6;overflow-x:clip;-webkit-font-smoothing:antialiased}
+.paper{background-color:var(--paper);background-image:linear-gradient(90deg,transparent 0 var(--mg),var(--margin) var(--mg),var(--margin) calc(var(--mg) + 1.5px),transparent calc(var(--mg) + 1.5px)),repeating-linear-gradient(180deg,transparent 0 31px,var(--rule) 31px 32px)}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:clamp(30px,6vw,88px)}
+h1,h2,h3{margin:0;font-family:var(--disp);font-weight:800;letter-spacing:-.025em;text-wrap:balance;line-height:1}
+p{margin:0}
+.hand{font-family:var(--hand);font-weight:700;color:var(--margin);line-height:1.1}
+.lab{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.h2{font-size:clamp(40px,5.4vw,76px)}
+.lede{font-size:19px;color:var(--ink2);max-width:54ch}
+.hl{background:linear-gradient(transparent 58%,var(--hi) 58%,var(--hi) 92%,transparent 92%);padding-inline:.06em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 22px;border-radius:12px;font:700 16px var(--body);text-decoration:none;border:0;cursor:pointer;transition:transform .3s var(--spring),box-shadow .3s}
+.btn-ink{background:var(--ink);color:#FFFFFF;box-shadow:0 4px 0 var(--hi)}
+.btn-ink:hover{color:#FFFFFF;transform:translateY(-2px);box-shadow:0 6px 0 var(--hi)}
+.btn-line{background:#FFFFFF;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn-line:hover{color:var(--ink);transform:translateY(-2px)}
+.co a:focus-visible,.co button:focus-visible,.co input:focus-visible,.co select:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+/* NAV: school diary strip */
+.nav{position:sticky;top:0;z-index:60;background:rgba(251,252,254,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:3px double var(--ink)}
+.navin{display:flex;align-items:center;gap:20px;min-height:70px;flex-wrap:wrap;padding-block:8px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.logo:hover{color:var(--ink)}
+.wm{font-family:var(--disp);font-weight:900;font-size:24px;letter-spacing:-.03em;line-height:1}
+.wm span{color:var(--margin)}
+.who{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.whol{font-family:var(--hand);font-size:22px;font-weight:700;color:var(--ink2)}
+.seg{position:relative;display:flex;padding:4px;border-radius:12px;background:#EEF2F8;box-shadow:inset 0 0 0 1px var(--rule)}
+.seg button{position:relative;z-index:1;min-height:40px;padding:0 14px;border:0;background:transparent;font:700 14px var(--body);color:var(--ink2);cursor:pointer;border-radius:9px;transition:color .3s}
+.seg button.on{color:#FFFFFF}
+.seg .pill{position:absolute;top:4px;bottom:4px;border-radius:9px;background:var(--ink);transition:left .45s var(--spring),width .45s var(--spring)}
+/* OPENING */
+.open{position:relative;padding-block:64px 90px;overflow:hidden}
+.ogrid{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:40px;align-items:start}
+.h1{font-size:clamp(56px,8.4vw,128px);line-height:.92;letter-spacing:-.045em}
+.h1 .w{display:inline-block;animation:write .9s var(--ease) both}
+.h1 .w:nth-child(2){animation-delay:.08s}.h1 .w:nth-child(3){animation-delay:.16s}.h1 .w:nth-child(4){animation-delay:.24s}.h1 .w:nth-child(5){animation-delay:.32s}.h1 .w:nth-child(6){animation-delay:.4s}
+.one{position:relative;display:inline-block;color:var(--margin)}
+.one svg{position:absolute;inset:-14% -10% -8% -10%;width:120%;height:122%;overflow:visible;pointer-events:none}
+.one path{fill:none;stroke:var(--margin);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:640;stroke-dashoffset:640;animation:draw 1.1s var(--ease) .9s forwards}
+.mnote{display:flex;flex-direction:column;gap:6px;padding-top:30px;transform:rotate(-3deg);animation:fade 1s var(--ease) 1.2s both}
+.mnote .hand{font-size:34px}
+.mnote svg{width:110px;height:60px}
+.mnote path{fill:none;stroke:var(--margin);stroke-width:2.5;stroke-linecap:round}
+.olede{margin-top:28px;animation:fade 1s var(--ease) .5s both}
+.doorsh{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-top:56px}
+.doorsh h2{font-size:clamp(28px,3vw,40px)}
+.doors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;margin-top:22px;perspective:1400px}
+.door{position:relative;text-align:left;border:0;cursor:pointer;padding:0;background:transparent;transform-style:preserve-3d;font:inherit;color:inherit}
+.cover{position:relative;aspect-ratio:4/3.2;max-width:100%;border-radius:6px 14px 14px 6px;padding:22px 22px 22px 34px;display:flex;flex-direction:column;justify-content:space-between;color:#FFFFFF;box-shadow:inset 10px 0 0 rgba(0,0,0,.18),0 18px 30px -18px rgba(23,34,58,.6);transform-origin:left center;transition:transform .6s var(--spring),box-shadow .4s}
+.cover::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:rgba(255,255,255,.25)}
+.door:hover .cover{transform:rotateY(-14deg)}
+.door.on .cover{transform:rotateY(-22deg) translateX(4px);box-shadow:inset 10px 0 0 rgba(0,0,0,.18),0 0 0 4px var(--hi),0 26px 40px -18px rgba(23,34,58,.7)}
+.label{background:#FFFFFF;color:var(--ink);border-radius:6px;padding:12px 14px;box-shadow:0 2px 0 rgba(0,0,0,.12);display:flex;flex-direction:column;gap:2px;max-width:88%}
+.label .lab{font-size:10px}
+.label b{font-family:var(--disp);font-size:clamp(22px,2.2vw,30px);line-height:1.05;letter-spacing:-.02em}
+.label .ln{border-bottom:1.5px solid var(--rule);font-family:var(--hand);font-size:22px;color:var(--blue);line-height:1.2}
+.cover .sub{font-size:15.5px;line-height:1.4;max-width:30ch;color:rgba(255,255,255,.92)}
+.tick{position:absolute;right:-12px;top:-14px;width:56px;height:56px;border-radius:50%;background:var(--hi);display:flex;align-items:center;justify-content:center;transform:scale(0) rotate(-30deg);transition:transform .45s var(--spring);box-shadow:0 6px 14px -6px rgba(0,0,0,.4)}
+.door.on .tick{transform:scale(1) rotate(-8deg)}
+.picked{margin-top:22px;font-family:var(--hand);font-size:26px;color:var(--blue);min-height:34px}
+/* TIMETABLE (horizontal) */
+.tt{position:relative;background:#F4F7FB;border-block:3px double var(--ink)}
+.ttpin{display:flex;flex-direction:column;overflow:hidden}
+.tt.wide .ttpin{position:sticky;top:0}
+.tthead{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-block:96px 22px}
+.tthead h2{font-size:clamp(34px,4vw,56px)}
+.pers{display:flex;gap:4px;flex-wrap:wrap}
+.per{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-width:92px;min-height:48px;padding:6px 12px;border-radius:10px;border:0;background:#FFFFFF;box-shadow:inset 0 0 0 1px var(--rule);cursor:pointer;text-align:left;font:inherit;color:var(--ink2);transition:all .3s}
+.per .t{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em}
+.per b{font-size:13.5px;font-weight:700;color:var(--ink)}
+.per.on{background:var(--ink);box-shadow:none}
+.per.on .t,.per.on b{color:#FFFFFF}
+.per.done{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.ttwin{flex:1;min-height:0;overflow:hidden;padding-bottom:40px}
+.tttrack{display:flex;gap:28px;padding-inline:clamp(30px,6vw,88px);will-change:transform}
+.tt:not(.wide) .tttrack{flex-direction:column;transform:none!important}
+.panel{flex:none;border-radius:20px;background:#FFFFFF;box-shadow:inset 0 0 0 1.5px var(--ink),0 6px 0 var(--ink);padding:32px;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:32px;align-items:center;min-height:440px;position:relative;overflow:hidden}
+.tt:not(.wide) .panel{width:100%!important;grid-template-columns:minmax(0,1fr);min-height:0}
+.panel .pt{display:flex;flex-direction:column;gap:14px}
+.panel h3{font-size:clamp(32px,3.4vw,50px)}
+.panel p{color:var(--ink2);font-size:17.5px;max-width:42ch}
+.ptag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.ptag b{background:var(--hi);padding:3px 8px;border-radius:5px;font-weight:500}
+.ill{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.recess{background:var(--hi)}
+/* P1 desks */
+.desks{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;padding:18px;border-radius:14px;background:#F4F7FB}
+.desk{aspect-ratio:1.2;border-radius:6px;background:#FFFFFF;box-shadow:inset 0 0 0 1.5px var(--rule);display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px}
+.desk i{width:40%;aspect-ratio:1;border-radius:50%;background:#C9D3E2;display:block;transition:background .4s,transform .4s var(--spring)}
+.desk.me i{background:var(--margin);transform:scale(1.2)}
+.board{grid-column:1/-1;height:38px;border-radius:6px;background:var(--chalk);color:var(--onChalk);display:flex;align-items:center;justify-content:center;font-family:var(--hand);font-size:22px}
+/* P2 class view */
+.cls{border-radius:16px;background:var(--ink);padding:14px;display:flex;flex-direction:column;gap:12px;color:#FFFFFF}
+.tiles{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:10px}
+.tile{position:relative;aspect-ratio:4/3;border-radius:12px;background:#24314F;display:flex;align-items:center;justify-content:center}
+.tile .av{width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:800;font-size:22px;color:var(--ink)}
+.tile .nm{position:absolute;left:10px;bottom:8px;font-family:var(--mono);font-size:10.5px;color:#C6D0E2}
+.tile .live{position:absolute;right:10px;top:8px;font-family:var(--mono);font-size:10px;padding:2px 7px;border-radius:999px;background:var(--margin)}
+.tile.quiet{box-shadow:inset 0 0 0 2px var(--hi)}
+.nudges{display:flex;flex-direction:column;gap:8px;min-height:150px}
+.nudge{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:10px;background:#FFFFFF;color:var(--ink);font-size:14px;line-height:1.35;animation:pop .5s var(--spring) both}
+.nudge .ic{flex:none;width:26px;height:26px;border-radius:8px;background:var(--hi);display:flex;align-items:center;justify-content:center}
+.nudge.old{opacity:.55;animation:none}
+/* P3 lesson */
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{min-height:44px;padding:0 16px;border-radius:999px;border:0;background:#FFFFFF;box-shadow:inset 0 0 0 1.5px var(--ink);font:700 14.5px var(--body);color:var(--ink);cursor:pointer;transition:all .3s var(--spring)}
+.chip:hover{transform:translateY(-2px)}
+.chip.on{background:var(--ink);color:#FFFFFF}
+.ws{position:relative;border-radius:14px;padding:20px 20px 20px 46px;display:flex;flex-direction:column;gap:14px;box-shadow:inset 0 0 0 1.5px var(--rule)}
+.ws .q{font-size:18px;line-height:1.45;min-height:5.4em}
+.qa{animation:swapA .55s var(--ease) both}
+.qb{animation:swapB .55s var(--ease) both}
+.grid24{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:5px}
+.grid24 i{aspect-ratio:1;border-radius:4px;background:#E4EAF3;display:block;transition:background .4s}
+.grid24 i.f{background:var(--qc)}
+.ans{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.ans .frac{font-family:var(--disp);font-weight:800;font-size:34px}
+.ok{position:absolute;right:16px;top:-14px;transform:rotate(8deg);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:6px;color:var(--green);background:#FFFFFF;box-shadow:inset 0 0 0 2px var(--green);display:flex;align-items:center;gap:6px}
+/* P4 parent window */
+.pw{border-radius:16px;padding:18px;background:#F4F7FB;display:flex;flex-direction:column;gap:14px}
+.bars{display:grid;grid-template-columns:repeat(40,minmax(0,1fr));gap:3px;align-items:end;height:130px;border-bottom:1.5px solid var(--ink)}
+.bar{border:0;padding:0;border-radius:3px 3px 0 0;background:#C3CEDF;cursor:pointer;transition:background .2s,transform .3s var(--spring);transform-origin:bottom;min-height:4px}
+.bar:hover{background:var(--blue)}
+.bar.on{background:var(--margin);transform:scaleX(1.4)}
+.bar.k{background:#8FA4C4}
+.bar.k.on{background:var(--margin)}
+.mins{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px;color:var(--ink3)}
+.note{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:#FFFFFF;box-shadow:inset 0 0 0 1px var(--rule)}
+.note b{font-family:var(--disp);font-weight:800;font-size:24px;line-height:1;color:var(--margin);flex:none;min-width:58px}
+/* recess */
+.stickies{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.sticky{background:#FFFFFF;padding:18px;border-radius:4px;box-shadow:0 12px 20px -14px rgba(23,34,58,.5);display:flex;flex-direction:column;gap:10px;transition:transform .4s var(--spring)}
+.sticky:nth-child(1){transform:rotate(-2.5deg)}.sticky:nth-child(2){transform:rotate(2deg)}
+.sticky:hover{transform:rotate(0) scale(1.03)}
+.sticky .big{font-family:var(--disp);font-weight:900;font-size:40px;line-height:.95}
+.sticky p{font-size:15px;color:var(--ink)}
+/* P5 clocks */
+.cities{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.city{border-radius:12px;padding:14px;background:#F4F7FB;display:flex;flex-direction:column;gap:2px}
+.city b{font-family:var(--disp);font-weight:800;font-size:22px}
+.city .tm{font-family:var(--mono);font-size:20px;font-variant-numeric:tabular-nums}
+.city .st{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.city.after{background:var(--ink);color:#FFFFFF}
+.city.after .st{color:var(--hi)}
+/* FOR YOU */
+.sec{padding-block:120px}
+.fy{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:start}
+.fyswap{animation:swapA .6s var(--ease) both}
+.fyswap2{animation:swapB .6s var(--ease) both}
+.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1.5px solid var(--ink)}
+.list li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;padding:16px 0;border-bottom:1px solid var(--rule);font-size:17px}
+.list li .n{font-family:var(--hand);font-size:28px;font-weight:700;color:var(--margin);line-height:1}
+.subj{display:flex;flex-wrap:wrap;gap:8px}
+.subj span{padding:8px 14px;border-radius:8px;background:#FFFFFF;box-shadow:inset 0 0 0 1.5px var(--ink);font-weight:700;font-size:14.5px}
+.stip{display:flex;align-items:baseline;gap:12px;padding:18px 20px;border-radius:14px;background:var(--hi);margin-top:6px}
+.stip b{font-family:var(--disp);font-weight:900;font-size:34px}
+/* REPORT CARD */
+.rc{border-radius:8px;background:#FFFFFF;box-shadow:0 0 0 1.5px var(--ink),8px 8px 0 var(--ink);overflow:hidden}
+.rchead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;padding:22px 26px;border-bottom:3px double var(--ink)}
+.rchead h3{font-size:clamp(26px,2.8vw,38px)}
+.rctbl{overflow-x:auto}
+.rrow{display:grid;grid-template-columns:200px 190px minmax(0,1fr);min-width:640px;border-bottom:1px solid var(--rule)}
+.rrow > div{padding:16px 22px;border-right:1px solid var(--rule)}
+.rrow > div:last-child{border-right:0}
+.rrow.h > div{padding-block:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.rrow .s{font-weight:700}
+.rrow .w{font-family:var(--hand);font-size:24px;color:var(--blue);line-height:1.1}
+.rrow .r{color:var(--ink2);font-size:15.5px}
+.rrow{opacity:.2;transform:translateX(-10px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.rc.go .rrow{opacity:1;transform:none}
+.rc.go .rrow:nth-child(3){transition-delay:.08s}.rc.go .rrow:nth-child(4){transition-delay:.16s}.rc.go .rrow:nth-child(5){transition-delay:.24s}.rc.go .rrow:nth-child(6){transition-delay:.32s}.rc.go .rrow:nth-child(7){transition-delay:.4s}
+.rrow.h{opacity:1;transform:none}
+.remark{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;padding:22px 26px}
+.remark .hand{font-size:clamp(26px,2.6vw,34px);color:var(--ink)}
+.sign{display:flex;flex-direction:column;align-items:center;gap:2px}
+.sign svg path{fill:none;stroke:var(--blue);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:300;stroke-dashoffset:300;transition:stroke-dashoffset 1.4s var(--ease) .5s}
+.rc.go .sign svg path{stroke-dashoffset:0}
+/* RAISE HAND */
+.raise{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.form{border-radius:18px;background:#FFFFFF;box-shadow:inset 0 0 0 1.5px var(--ink),0 6px 0 var(--ink);padding:28px;display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.field input,.field select{min-height:50px;border:0;border-bottom:2px solid var(--ink);border-radius:0;padding:0 4px;font:500 18px var(--body);color:var(--ink);background:transparent}
+.field input:focus,.field select:focus{outline:none;border-bottom-color:var(--margin)}
+.handwrap{position:relative;display:flex;align-items:center;justify-content:center;min-height:300px}
+.bighand{transform-origin:50% 100%;transition:transform .8s var(--spring)}
+.handwrap.up .bighand{transform:translateY(-30px) rotate(-6deg)}
+.star{position:absolute;top:10%;right:22%;transform:scale(0) rotate(-40deg);transition:transform .6s var(--spring) .4s}
+.handwrap.up .star{transform:scale(1) rotate(12deg)}
+.handwrap .hint{position:absolute;bottom:4px;font-family:var(--hand);font-size:26px;color:var(--ink2)}
+/* FOOTER: chalkboard, last bell */
+.foot{position:relative;background:var(--chalk);color:var(--onChalk);padding-block:96px 0;overflow:hidden;border-top:14px solid #8A5A35}
+.foot::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.06),transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(255,255,255,.04),transparent 50%);pointer-events:none}
+.fgrid{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:56px;align-items:start}
+.chalkh{font-family:var(--hand);font-weight:700;font-size:clamp(64px,9vw,140px);line-height:.9;color:#FFFFFF}
+.chalkh span{display:inline-block;clip-path:inset(0 100% 0 0);transition:clip-path 1.2s var(--ease)}
+.foot.ring .chalkh span{clip-path:inset(0 -5% 0 0)}
+.bell{display:inline-block;transform-origin:50% 8%;margin-left:12px;vertical-align:middle}
+.foot.ring .bell{animation:ring 1.4s ease-in-out 2}
+.tom{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1.5px solid rgba(234,242,236,.4)}
+.tom li{border-bottom:1px dashed rgba(234,242,236,.3)}
+.tom a{display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:14px;align-items:center;min-height:52px;text-decoration:none;color:var(--onChalk);font-size:17px;transition:padding .3s var(--ease),color .2s}
+.tom a:hover{padding-left:10px;color:var(--hi)}
+.tom .t{font-family:var(--mono);font-size:12px;color:#B9CDC1}
+.tray{position:relative;margin-top:72px;height:30px;background:#7A4E2E;box-shadow:inset 0 6px 0 rgba(0,0,0,.2)}
+.tray i{position:absolute;bottom:20px;height:10px;border-radius:3px;display:block}
+.legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;background:#6B4428;color:#F1DEC9;padding:16px clamp(30px,6vw,88px) 26px;font-family:var(--mono);font-size:11.5px}
+.legal a{color:#F1DEC9;text-decoration:none}
+.legal a:hover{color:#FFFFFF}
+@supports (animation-timeline: view()) {.rv{animation:rv linear both;animation-timeline:view();animation-range:entry 5% entry 60%}}
+@keyframes rv{from{opacity:0;transform:translateY(46px)}}
+@keyframes write{from{opacity:0;transform:translateY(30px) rotate(-3deg);filter:blur(4px)}}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.95)}}
+@keyframes swapA{from{opacity:0;transform:translateY(12px)}}
+@keyframes swapB{from{opacity:0;transform:translateY(12px)}}
+@keyframes ring{0%,100%{transform:rotate(0)}10%{transform:rotate(18deg)}20%{transform:rotate(-16deg)}30%{transform:rotate(12deg)}40%{transform:rotate(-10deg)}50%{transform:rotate(6deg)}60%{transform:rotate(-3deg)}}
+@media (max-width:1000px){
+.ogrid,.fy,.raise,.fgrid{grid-template-columns:minmax(0,1fr)}
+.mnote{padding-top:0}
+.doors{grid-template-columns:minmax(0,1fr)}
+.cover{aspect-ratio:auto;min-height:220px}
+.sec{padding-block:88px}
+.tthead{padding-block:56px 20px}
+.who{justify-content:flex-start}
+}
+@media (max-width:620px){
+.whol{display:none}
+.seg button{padding:0 10px;font-size:13px}
+.cities{grid-template-columns:repeat(2,minmax(0,1fr))}
+.stickies{grid-template-columns:minmax(0,1fr)}
+.panel{padding:22px}
+.remark{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){.co *,.co *::before,.co *::after{animation:none!important;transition:none!important}.one path{stroke-dashoffset:0}.chalkh span{clip-path:none}}
+</style>
+</helmet>
+<div class="co" style="--hi: {{accent}}">
+
+<!-- NAV -->
+<header class="nav">
+<div class="wrap navin">
+<a class="logo" href="#top" aria-label="Class of One home">
+<svg width="38" height="38" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="{{accent}}"></rect><path d="M14 13 L22 9 L22 31" fill="none" stroke="#17223A" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 31 H29" stroke="#17223A" stroke-width="4.2" stroke-linecap="round"></path><circle cx="31" cy="11" r="3.2" fill="#E35D52"></circle></svg>
+<span class="wm">class of <span>one</span></span>
+</a>
+<div class="who">
+<span class="whol">I'm a</span>
+<div class="seg" role="group" aria-label="Who are you?">
+<span class="pill" style="left: {{pillL}}; width: {{pillW}}" aria-hidden="true"></span>
+<sc-for list="{{auds}}" as="a" hint-placeholder-count="3">
+<button type="button" class="{{a.cls}}" aria-pressed="{{a.pressed}}" onClick="{{a.pick}}" data-seg="{{a.id}}">{{a.short}}</button>
+</sc-for>
+</div>
+</div>
+<a class="btn btn-ink" href="#raise" style="min-height: 44px">{{navCta}}</a>
+</div>
+</header>
+
+<!-- OPENING -->
+<section class="open paper" id="top">
+<div class="wrap">
+<div class="ogrid">
+<div>
+<span class="lab">Live 1:1 classes · Nursery to Class 12 · Bengaluru</span>
+<h1 class="h1" style="margin-top: 18px"><span class="w">Every</span> <span class="w">child</span> <span class="w">deserves</span> <span class="w">a</span> <span class="w">class</span> <span class="w">of <span class="one">one.<svg viewBox="0 0 300 140" preserveAspectRatio="none" aria-hidden="true"><path d="M150 8 C 60 6, 10 40, 14 74 C 18 116, 120 136, 200 126 C 280 116, 296 66, 268 36 C 240 8, 170 4, 120 14"></path></svg></span></span></h1>
+<p class="lede olede">Live one-on-one classes for school children, taught by brilliant teachers and made superhuman by the AI working quietly behind them. It starts with live 1:1 teaching, and grows into an adaptive learning platform on the path to a world-class AI tutor for every child.</p>
+</div>
+<div class="mnote" aria-hidden="true">
+<span class="hand">humans first, always.</span>
+<svg viewBox="0 0 110 60"><path d="M100 6 C 70 10, 40 26, 20 50"></path><path d="M20 50 L 32 46 M20 50 L 22 37"></path></svg>
+</div>
+</div>
+
+<div class="doorsh"><h2>Who's reading?</h2><span class="hand" style="font-size: 26px; color: var(--ink2)">pick a notebook, the page will follow</span></div>
+<div class="doors">
+<sc-for list="{{doors}}" as="d" hint-placeholder-count="3">
+<button type="button" class="door {{d.cls}}" aria-pressed="{{d.pressed}}" onClick="{{d.pick}}">
+<div class="cover" style="background: {{d.color}}">
+<div class="label"><span class="lab">Name</span><b>{{d.title}}</b><span class="ln">{{d.scrawl}}</span></div>
+<span class="sub">{{d.sub}}</span>
+</div>
+<span class="tick" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#17223A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></span>
+</button>
+</sc-for>
+</div>
+<p class="picked" aria-live="polite">{{pickedNote}}</p>
+</div>
+</section>
+
+<!-- TIMETABLE -->
+<section class="tt {{ttCls}}" id="timetable" data-tt="1" style="height: {{ttH}}">
+<div class="ttpin" style="height: {{pinH}}">
+<div class="wrap tthead">
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span class="lab">Today's timetable</span>
+<h2>A school day, rebuilt.</h2>
+</div>
+<div class="pers" role="group" aria-label="Periods">
+<sc-for list="{{periods}}" as="p" hint-placeholder-count="6">
+<button type="button" class="per {{p.cls}}" aria-current="{{p.cur}}" onClick="{{p.go}}"><span class="t">{{p.t}}</span><b>{{p.label}}</b></button>
+</sc-for>
+</div>
+</div>
+<div class="ttwin">
+<div class="tttrack" data-track="1" style="transform: translateX({{tx}})">
+
+<!-- P1 -->
+<article class="panel" style="width: {{pw}}">
+<div class="pt">
+<span class="ptag"><b>Period 1 · 9:00</b>The problem</span>
+<h3>One lecture. Thirty children.</h3>
+<p>Most children sit through lessons nobody would choose to attend. We think that's a design failure, not a fact of life.</p>
+<span class="hand" style="font-size: 26px">we want lessons a child would pick on a free evening</span>
+</div>
+<div class="desks" aria-hidden="true">
+<span class="board">today: fractions</span>
+<sc-for list="{{desks}}" as="k" hint-placeholder-count="30">
+<span class="desk {{k.cls}}"><i></i></span>
+</sc-for>
+</div>
+</article>
+
+<!-- P2 -->
+<article class="panel" style="width: {{pw}}">
+<div class="pt">
+<span class="ptag"><b>Period 2 · 10:00</b>The teacher</span>
+<h3>Same human. <span class="hl">Superhuman.</span></h3>
+<p>A teacher who walks into class already knowing what the child got wrong last week. Who gets a quiet nudge the moment the child goes silent. Who sees afterwards exactly which minute worked.</p>
+</div>
+<div class="cls">
+<div class="tiles" aria-hidden="true">
+<div class="tile"><span class="av" style="background: #F5C9B8">MS</span><span class="nm">Ms. Shah · teacher</span><span class="live">LIVE</span></div>
+<div class="tile {{quietCls}}"><span class="av" style="background: #BFD8F2">A</span><span class="nm">Aarav · Class 5</span></div>
+</div>
+<div class="nudges" aria-live="polite">
+<sc-for list="{{nudges}}" as="n" hint-placeholder-count="3">
+<div class="nudge {{n.cls}}"><span class="ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#17223A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"></path></svg></span><span>{{n.t}}</span></div>
+</sc-for>
+</div>
+<span class="ill" style="color: #AEB9CC">Illustration · what the teacher sees</span>
+</div>
+</article>
+
+<!-- P3 -->
+<article class="panel" style="width: {{pw}}" id="lesson">
+<div class="pt">
+<span class="ptag"><b>Period 3 · 11:00</b>The lesson</span>
+<h3>The same chapter, rebuilt for one child.</h3>
+<p>Cricket scores for one child, dinosaurs for the next. Rebuilt for how each of them actually learns, with a teacher signing off on every page.</p>
+<div class="chips" role="group" aria-label="What does your child love?">
+<sc-for list="{{interests}}" as="i" hint-placeholder-count="4">
+<button type="button" class="chip {{i.cls}}" aria-pressed="{{i.pressed}}" onClick="{{i.pick}}">{{i.label}}</button>
+</sc-for>
+</div>
+</div>
+<div class="ws paper" style="--qc: {{qColor}}">
+<span class="ok"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg>Teacher approved</span>
+<span class="lab">Worksheet · Fractions · Class 5</span>
+<p class="q {{qCls}}">{{question}}</p>
+<div class="grid24" aria-hidden="true">
+<sc-for list="{{cells}}" as="c" hint-placeholder-count="24"><i class="{{c.cls}}"></i></sc-for>
+</div>
+<div class="ans"><span class="hand" style="font-size: 26px; color: var(--ink2)">6 out of 24 =</span><span class="frac">¼</span></div>
+<span class="ill">Illustration · sample question</span>
+</div>
+</article>
+
+<!-- P4 -->
+<article class="panel" style="width: {{pw}}">
+<div class="pt">
+<span class="ptag"><b>Period 4 · 12:00</b>Parents</span>
+<h3>A window into every class.</h3>
+<p>A parent who can see inside every class knows whether it's working. Nobody has to call her to tell her.</p>
+<span class="hand" style="font-size: 24px">tap a minute</span>
+</div>
+<div class="pw">
+<div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap"><span class="lab">Aarav · Fractions · 40 min</span><span class="ill">Sample class</span></div>
+<div class="bars" role="group" aria-label="Minutes of the class">
+<sc-for list="{{bars}}" as="b" hint-placeholder-count="40">
+<button type="button" class="bar {{b.cls}}" style="height: {{b.h}}" aria-label="{{b.aria}}" onClick="{{b.pick}}" onMouseEnter="{{b.pick}}"></button>
+</sc-for>
+</div>
+<div class="mins"><span>0</span><span>10</span><span>20</span><span>30</span><span>40 min</span></div>
+<div class="note" aria-live="polite"><b>{{minLabel}}</b><span>{{minNote}}</span></div>
+</div>
+</article>
+
+<!-- RECESS -->
+<article class="panel recess" style="width: {{pw}}">
+<div class="pt">
+<span class="ptag"><b style="background: #FFFFFF">Recess · 1:00</b>The research</span>
+<h3>Why the human stays at the front.</h3>
+<p>Keep the human at the front, and let AI rebuild everything behind them.</p>
+</div>
+<div class="stickies">
+<div class="sticky"><span class="lab">Patricia Kuhl, 2003</span><span class="big">The social gate</span><p>Nine-month-old babies learned Mandarin sounds from a live speaker. The same sessions on video taught them nothing. The person was the difference.</p></div>
+<div class="sticky"><span class="lab">Benjamin Bloom</span><span class="big">2 sigma</span><p>Students taught one-to-one by a human tutor did far better than students taught in a regular class.</p></div>
+</div>
+</article>
+
+<!-- P5 -->
+<article class="panel" style="width: {{pw}}">
+<div class="pt">
+<span class="ptag"><b>Period 5 · 2:00</b>Anywhere</span>
+<h3>For a child in Patna, or Toronto.</h3>
+<p>The best teacher and a curriculum made for one, available to a child in Jaipur or Manchester, Dubai or Melbourne, Patna or Toronto.</p>
+</div>
+<div class="cities" aria-live="off">
+<sc-for list="{{cities}}" as="c" hint-placeholder-count="6">
+<div class="city {{c.cls}}"><b>{{c.name}}</b><span class="tm">{{c.time}}</span><span class="st">{{c.st}}</span></div>
+</sc-for>
+</div>
+</article>
+
+</div>
+</div>
+</div>
+</section>
+
+<!-- FOR YOU -->
+<section class="sec paper" id="for-you">
+<div class="wrap">
+<div class="fy">
+<div class="{{fyCls}}" style="display: flex; flex-direction: column; gap: 18px">
+<span class="lab">{{fyLab}}</span>
+<h2 class="h2">{{fyHead}}</h2>
+<p class="lede">{{fyLede}}</p>
+<sc-if value="{{isParent}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; gap: 12px; flex-wrap: wrap"><a class="btn btn-ink" href="https://lnkd.in/gPNZ_mMG">Take the 5-minute parent survey</a><a class="btn btn-line" href="#raise">Join the waitlist</a></div>
+</sc-if>
+<sc-if value="{{isTeacher}}" hint-placeholder-val="{{ false }}">
+<div class="subj"><span>Maths</span><span>Science</span><span>English</span><span>Kannada</span><span>Hindi</span><span>Money &amp; financial literacy</span></div>
+<span class="lab">IB · ICSE · CBSE</span>
+</sc-if>
+<sc-if value="{{isMaker}}" hint-placeholder-val="{{ false }}">
+<div class="stip"><b>₹20,000</b><span>a month stipend · Curriculum Fellowship · 2 spots · work directly with founders · top fellows convert to full-time roles</span></div>
+</sc-if>
+</div>
+<ul class="list {{fyCls2}}">
+<sc-for list="{{fyItems}}" as="f" hint-placeholder-count="5">
+<li><span class="n">{{f.n}}</span><span>{{f.t}}</span></li>
+</sc-for>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- REPORT CARD -->
+<section class="sec" id="report" style="background: #F4F7FB; border-block: 3px double var(--ink)">
+<div class="wrap">
+<div class="rv" style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px">
+<span class="lab">The founder</span>
+<h2 class="h2">Pratik Vimal's report card.</h2>
+</div>
+<div class="rc {{rcCls}}" data-rc="1">
+<div class="rchead">
+<div style="display: flex; flex-direction: column; gap: 6px"><span class="lab">Progress report · [Founder photo]</span><h3>Pratik Vimal</h3></div>
+<span class="lab">IIT Kanpur · Bengaluru · Founder &amp; Product Builder</span>
+</div>
+<div class="rctbl">
+<div class="rrow h"><div>Subject</div><div>Where</div><div>Remarks</div></div>
+<div class="rrow"><div class="s">Product leadership</div><div class="w">Licious · WhiteHat Jr</div><div class="r">SVP &amp; Head of Products at Licious (2025–26). VP, then SVP &amp; Head of Products at WhiteHat Jr (2019–23). Years inside edtech.</div></div>
+<div class="rrow"><div class="s">Product management</div><div class="w">Amazon</div><div class="r">2018–2019, Bengaluru.</div></div>
+<div class="rrow"><div class="s">Growth &amp; marketing</div><div class="w">Tapzo</div><div class="r">Vice President, Product Marketing &amp; Business, 2014–2018.</div></div>
+<div class="rrow"><div class="s">Strategy</div><div class="w">PwC</div><div class="r">Distribution, marketing, expansion and pricing strategy for Fortune 500 companies, 2011–2014.</div></div>
+<div class="rrow"><div class="s">Building in public</div><div class="w">WealthLens · FundLens</div><div class="r">Free, data-first money research tools. FundLens (mutual-funds.ai) is live, built solo on nights and weekends.</div></div>
+<div class="rrow"><div class="s">Parenting</div><div class="w">Home</div><div class="r">A career break for full-time parenting, 2023–24. "Chief Diaper Officer and Sleep Negotiation Specialist."</div></div>
+</div>
+<div class="remark">
+<div style="display: flex; flex-direction: column; gap: 6px"><span class="lab">His view, in his words</span><p class="hand">“AI will not replace the teacher. A seven year old learns from a person.”</p></div>
+<div class="sign" aria-hidden="true"><svg width="150" height="56" viewBox="0 0 150 56"><path d="M6 40 C 20 10, 30 10, 32 36 C 34 48, 44 18, 54 30 C 62 40, 70 20, 80 30 C 92 42, 104 14, 118 26 C 128 34, 136 30, 144 22"></path></svg><span class="lab">Founder</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- RAISE HAND -->
+<section class="sec paper" id="raise">
+<div class="wrap raise">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<span class="lab">Building now · early stage</span>
+<h2 class="h2">{{raiseHead}}</h2>
+<sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+<form class="form" onSubmit="{{submit}}">
+<div class="field"><label for="r-name">Your name</label><input id="r-name" type="text" autocomplete="name" placeholder="Write your name"></div>
+<div class="field"><label for="r-email">Email</label><input id="r-email" type="email" autocomplete="email" placeholder="you@email.com"></div>
+<sc-if value="{{isParent}}" hint-placeholder-val="{{ true }}">
+<div class="field"><label for="r-class">Your child's class</label><select id="r-class"><option>Nursery – KG</option><option>Class 1 – 4</option><option>Class 5 – 8</option><option>Class 9 – 10</option><option>Class 11 – 12</option></select></div>
+</sc-if>
+<sc-if value="{{isTeacher}}" hint-placeholder-val="{{ false }}">
+<div class="field"><label for="r-subj">Subject you teach</label><select id="r-subj"><option>Maths</option><option>Science</option><option>English</option><option>Kannada</option><option>Hindi</option><option>Money &amp; financial literacy</option></select></div>
+</sc-if>
+<sc-if value="{{isMaker}}" hint-placeholder-val="{{ false }}">
+<div class="field"><label for="r-lesson">Link to one lesson you're proud of</label><input id="r-lesson" type="url" placeholder="https://"></div>
+</sc-if>
+<button type="submit" class="btn btn-ink" style="align-self: flex-start">Raise my hand</button>
+</form>
+</sc-if>
+<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+<div class="form" style="gap: 10px"><span class="lab">Hand raised</span><h3 style="font-size: 34px">Thank you. Pratik will reach out personally.</h3><p style="color: var(--ink2)">You're on the list as a {{audWord}}.</p></div>
+</sc-if>
+</div>
+<div class="handwrap {{handCls}}" aria-hidden="true">
+<svg class="bighand" width="220" height="280" viewBox="0 0 220 280"><path d="M70 270 C 60 220, 40 190, 30 150 C 22 120, 40 110, 54 128 L 70 150 L 70 50 C 70 32, 96 32, 96 50 L 96 120 L 96 34 C 96 14, 124 14, 124 34 L 124 120 L 124 44 C 124 26, 150 26, 150 44 L 150 126 L 150 70 C 150 52, 176 52, 176 70 L 176 170 C 176 220, 160 250, 150 270 Z" fill="{{accent}}" stroke="#17223A" stroke-width="5" stroke-linejoin="round"></path><path d="M96 120 L 96 130 M124 120 L 124 132 M150 126 L 150 136" stroke="#17223A" stroke-width="4" stroke-linecap="round"></path><path d="M60 270 L 162 270" stroke="#17223A" stroke-width="6" stroke-linecap="round"></path></svg>
+<svg class="star" width="86" height="86" viewBox="0 0 24 24"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5L2.5 9.3l6.6-.8z" fill="#E35D52" stroke="#17223A" stroke-width="1.2" stroke-linejoin="round"></path></svg>
+<span class="hint">{{handHint}}</span>
+</div>
+</div>
+</section>
+
+<!-- FOOTER: last bell -->
+<footer class="foot {{footCls}}" id="bell" data-bell="1">
+<div class="wrap fgrid">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<span class="lab" style="color: #B9CDC1">3:30 pm · last bell</span>
+<p class="chalkh"><span>School's out.</span><svg class="bell" width="70" height="78" viewBox="0 0 70 78" aria-hidden="true"><path d="M35 6 C 20 6, 14 20, 14 34 L 14 50 L 6 60 L 64 60 L 56 50 L 56 34 C 56 20, 50 6, 35 6 Z" fill="{{accent}}" stroke="#EAF2EC" stroke-width="3" stroke-linejoin="round"></path><circle cx="35" cy="68" r="7" fill="#EAF2EC"></circle><circle cx="35" cy="5" r="4" fill="#EAF2EC"></circle></svg></p>
+<p style="color: #CFE0D5; max-width: 42ch; font-size: 18px">Live one-on-one classes for school children. Humans first, always.</p>
+<a class="logo" href="#top" aria-label="Back to top" style="color: #FFFFFF">
+<svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="{{accent}}"></rect><path d="M14 13 L22 9 L22 31" fill="none" stroke="#17223A" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 31 H29" stroke="#17223A" stroke-width="4.2" stroke-linecap="round"></path><circle cx="31" cy="11" r="3.2" fill="#E35D52"></circle></svg>
+<span class="wm" style="font-size: 22px">class of <span style="color: {{accent}}">one</span></span>
+</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<span class="hand" style="color: #FFFFFF; font-size: 32px">Tomorrow's timetable</span>
+<ul class="tom">
+<li><a href="#top"><span class="t">9:00</span><span>Who's reading?</span><span aria-hidden="true">→</span></a></li>
+<li><a href="#timetable"><span class="t">10:00</span><span>A school day, rebuilt</span><span aria-hidden="true">→</span></a></li>
+<li><a href="#for-you"><span class="t">11:00</span><span>{{fyLab}}</span><span aria-hidden="true">→</span></a></li>
+<li><a href="#report"><span class="t">12:00</span><span>The founder's report card</span><span aria-hidden="true">→</span></a></li>
+<li><a href="#raise"><span class="t">1:00</span><span>Raise your hand</span><span aria-hidden="true">→</span></a></li>
+</ul>
+<span style="font-family: var(--mono); font-size: 13px; color: #CFE0D5">hello@getclassofone.com · Bengaluru</span>
+</div>
+</div>
+<div class="tray" aria-hidden="true"><i style="left: 12%; width: 70px; background: #FFFFFF"></i><i style="left: 16%; width: 44px; background: #FFC93F"></i><i style="left: 64%; width: 90px; background: #E7EFF8"></i><i style="left: 80%; width: 52px; background: #F6B7A9"></i></div>
+<div class="legal"><span>© 2026 Class of One · Bengaluru</span><span><a href="#top">Privacy</a> · <a href="#top">Terms</a> · <a href="#top">Back to the top ↑</a></span></div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FFD23F","options":["#FFD23F","#8FD3B6","#FFB3A7","#A9C8FF"]},"$preview":{"width":1440,"height":9200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { aud: 'parent', touched: false, flip: 0, wide: true, vh: 800, pw: 1000, tx: 0, prog: 0, per: 0, nud: 2, interest: 0, iflip: 0, minute: 11, now: Date.now(), rc: false, ring: false, sent: false, segPos: [0, 0, 0, 0, 0, 0] };
+    this.audData = {
+      parent: { short: 'Parent', word: 'parent', cta: 'Join as a parent', lab: 'For parents', head: 'See inside every class.', lede: 'We are building live one-on-one online classes for school children, Nursery to Class 12. Before we build much further, we want to hear from parents.', raise: 'Want this for your child?', hint: 'raise your hand, we’ll reach out',
+        items: ['A brilliant teacher, one-on-one, live.', 'Lessons rebuilt around what your child loves.', 'A window into every class, so you know whether it’s working.', 'Most of the survey asks what your family already does and pays for, rather than what you think of our idea.', 'Five minutes. And if you know parents with strong views, a share helps more than anything.'] },
+      teacher: { short: 'Teacher', word: 'teacher', cta: 'Apply to teach', lab: 'For teachers', head: 'Teach from home, with tools that make you better every week.', lede: 'We are starting with a small group of exceptional teachers. You don’t need a big-brand résumé. You need to be brilliant with children.',
+        raise: 'Light up when a child finally gets it?', hint: 'raise your hand to teach',
+        items: ['You light up when a child finally gets it.', 'You care more about curiosity than marks.', 'You make subjects come alive, not just syllabi get covered.', 'If you can make “saving vs spending” fun for a 12-year-old, we want to talk.', 'You want to teach from home, with tools that make you better every week.'] },
+      maker: { short: 'Lesson maker', word: 'curriculum maker', cta: 'Apply to build lessons', lab: 'For curriculum makers', head: 'Write lessons a child would pick on a free evening.', lede: 'What you write gets taught again and again, to children you will never meet. That is the whole job, and it is a big one.',
+        raise: 'Got a lesson you’re proud of?', hint: 'raise your hand to build',
+        items: ['Deep subject command in Maths or Science: CBSE, IB or IGCSE.', 'Beyond-school range: something children kept coming back to after school hours.', 'A maker’s hands. You write, build and test the lessons yourself.', 'A very high bar for engagement. You know exactly why a lesson worked.', 'Real AI fluency. You can tell when its output is confidently wrong.'] }
+    };
+    this.order = ['parent', 'teacher', 'maker'];
+    this.nudgeData = [
+      'Aarav got 3 of 5 fraction questions wrong last week. Start there.',
+      'Aarav has been quiet for 40 seconds.',
+      'He answers faster when the example is about cricket.',
+      'Minute 12 worked: he explained it back in his own words.',
+      'Good moment to ask him to try the next one alone.'
+    ];
+    this.intData = [
+      { label: 'Cricket', color: '#2F6B52', q: 'Aarav faced 24 balls and hit 6 of them for four. What fraction of his balls went to the boundary?' },
+      { label: 'Dinosaurs', color: '#C8483F', q: 'A herd of 24 dinosaurs crossed the river. 6 of them were T-Rex. What fraction of the herd were T-Rex?' },
+      { label: 'Space', color: '#2F5F9E', q: 'A rocket carries 24 fuel cells. It used 6 to reach orbit. What fraction of its fuel did it use?' },
+      { label: 'Cooking', color: '#B7791F', q: 'A tray holds 24 cookies. 6 of them have chocolate chips. What fraction of the cookies have chips?' }
+    ];
+    var hs = [30,42,48,55,50,46,62,70,66,74,80,92,88,76,60,40,34,38,52,64,72,70,68,58,44,36,30,46,60,72,84,90,86,78,66,58,52,60,70,64];
+    var notes = { 0: 'Hello and warm-up. Talked about yesterday’s cricket match.', 4: 'Recap of last week’s fraction mistakes.', 11: 'He explained the idea back in his own words. This minute worked.', 15: 'Went quiet. The teacher switched to a cricket example.', 19: 'Back on track: solved two questions alone.', 30: 'Hardest question of the day, and he got it.', 39: 'Wrap-up and one question to try at home.' };
+    this.bars = hs.map(function (h, i) { return { h: h, note: notes[i] || null }; });
+    this.cityData = [['Jaipur', 'Asia/Kolkata'], ['Manchester', 'Europe/London'], ['Dubai', 'Asia/Dubai'], ['Melbourne', 'Australia/Melbourne'], ['Patna', 'Asia/Kolkata'], ['Toronto', 'America/Toronto']];
+    this.perLabels = [['9:00', 'The problem'], ['10:00', 'The teacher'], ['11:00', 'The lesson'], ['12:00', 'Parents'], ['1:00', 'Recess'], ['2:00', 'Anywhere']];
+  }
+  componentDidMount() {
+    var self = this;
+    this.dead = false;
+    var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+    this.reduced = !!(mq && mq.matches);
+    this.nudT = setInterval(function () { self.setState(function (s) { return { nud: s.nud + 1 }; }); }, 2600);
+    this.clkT = setInterval(function () { self.setState({ now: Date.now() }); }, 1000);
+    this.onScroll = function () { if (self.raf) return; self.raf = requestAnimationFrame(function () { self.raf = null; self.measure(); }); };
+    document.addEventListener('scroll', this.onScroll, true);
+    window.addEventListener('resize', this.onScroll);
+    this.measure();
+    this.t0 = setTimeout(function () { self.measure(); }, 300);
+  }
+  componentWillUnmount() {
+    this.dead = true;
+    clearInterval(this.nudT); clearInterval(this.clkT); clearTimeout(this.t0);
+    if (this.raf) cancelAnimationFrame(this.raf);
+    document.removeEventListener('scroll', this.onScroll, true);
+    window.removeEventListener('resize', this.onScroll);
+  }
+  scroller(el) {
+    var p = el && el.parentElement;
+    while (p && p !== document.body) {
+      var st = getComputedStyle(p);
+      if (/(auto|scroll)/.test(st.overflowY) && p.scrollHeight > p.clientHeight + 5) return p;
+      p = p.parentElement;
+    }
+    return document.scrollingElement || document.documentElement;
+  }
+  measure() {
+    var vh = window.innerHeight || 800;
+    var vw = window.innerWidth || 1200;
+    var upd = {};
+    var wide = vw >= 900;
+    if (wide !== this.state.wide) upd.wide = wide;
+    if (Math.abs(vh - this.state.vh) > 2) upd.vh = vh;
+    var tt = document.querySelector('[data-tt]');
+    var track = document.querySelector('[data-track]');
+    if (tt && track) {
+      var win = track.parentElement;
+      var pw = Math.round(Math.min(1060, win.clientWidth * 0.84));
+      if (Math.abs(pw - this.state.pw) > 2) upd.pw = pw;
+      if (wide) {
+        var r = tt.getBoundingClientRect();
+        var total = Math.max(1, tt.offsetHeight - vh);
+        var prog = Math.max(0, Math.min(1, -r.top / total));
+        var max = Math.max(0, track.scrollWidth - win.clientWidth);
+        var tx = Math.round(-prog * max);
+        if (tx !== this.state.tx) upd.tx = tx;
+        var per = Math.round(prog * 5);
+        if (per !== this.state.per) upd.per = per;
+        if (Math.abs(prog - this.state.prog) > 0.001) upd.prog = prog;
+      }
+    }
+    var rc = document.querySelector('[data-rc]');
+    if (rc && !this.state.rc && rc.getBoundingClientRect().top < vh * 0.8) upd.rc = true;
+    var bell = document.querySelector('[data-bell]');
+    if (bell && !this.state.ring && bell.getBoundingClientRect().top < vh * 0.75) upd.ring = true;
+    var segs = document.querySelectorAll('[data-seg]');
+    if (segs.length) {
+      var pos = [];
+      for (var i = 0; i < segs.length; i++) { pos.push(segs[i].offsetLeft, segs[i].offsetWidth); }
+      if (pos.join(',') !== this.state.segPos.join(',')) upd.segPos = pos;
+    }
+    if (Object.keys(upd).length) this.setState(upd);
+  }
+  goPeriod(i) {
+    var tt = document.querySelector('[data-tt]');
+    if (!tt) return;
+    if (!this.state.wide) { var arts = tt.querySelectorAll('article'); if (arts[i]) arts[i].scrollIntoView({ behavior: this.reduced ? 'auto' : 'smooth', block: 'start' }); return; }
+    var sc = this.scroller(tt);
+    var vh = window.innerHeight || 800;
+    var total = Math.max(1, tt.offsetHeight - vh);
+    var r = tt.getBoundingClientRect();
+    var top = sc === document.scrollingElement || sc === document.documentElement ? 0 : sc.getBoundingClientRect().top;
+    var target = sc.scrollTop + (r.top - top) + total * (i / 5) + 2;
+    sc.scrollTo({ top: target, behavior: this.reduced ? 'auto' : 'smooth' });
+  }
+  pick(id) {
+    var self = this;
+    this.setState(function (s) { return { aud: id, touched: true, flip: s.flip + 1 }; });
+    setTimeout(function () { self.measure(); }, 50);
+  }
+  renderVals() {
+    var self = this;
+    var s = this.state;
+    var A = this.audData[s.aud];
+    var idx = this.order.indexOf(s.aud);
+    var auds = this.order.map(function (id) { var d = self.audData[id]; return { id: id, short: d.short, cls: id === s.aud ? 'on' : '', pressed: id === s.aud ? 'true' : 'false', pick: function () { self.pick(id); } }; });
+    var doorMeta = { parent: ['#2F5F9E', 'Parent', 'my child', 'See what we’re building for your child, and tell us what you need.'], teacher: ['#C8483F', 'Teacher', 'ma’am / sir', 'Teach live, one-on-one, from home, with an AI that makes you better every week.'], maker: ['#2F6B52', 'Curriculum maker', 'lessons & stories', 'Write lessons that get taught again and again, to children you’ll never meet.'] };
+    var doors = this.order.map(function (id) { var m = doorMeta[id]; return { color: m[0], title: m[1], scrawl: m[2], sub: m[3], cls: s.touched && id === s.aud ? 'on' : '', pressed: s.touched && id === s.aud ? 'true' : 'false', pick: function () { self.pick(id); } }; });
+    var periods = this.perLabels.map(function (p, i) { return { t: p[0], label: p[1], cls: i === s.per ? 'on' : (i < s.per ? 'done' : ''), cur: i === s.per ? 'step' : 'false', go: function () { self.goPeriod(i); } }; });
+    var desks = []; for (var d = 0; d < 30; d++) desks.push({ cls: d === 14 ? 'me' : '' });
+    var nudges = []; for (var k = 2; k >= 0; k--) { var j = (s.nud - k + this.nudgeData.length * 10) % this.nudgeData.length; nudges.push({ t: this.nudgeData[j], cls: k === 0 ? '' : 'old' }); }
+    var curN = (s.nud % this.nudgeData.length);
+    var interests = this.intData.map(function (it, i) { return { label: it.label, cls: i === s.interest ? 'on' : '', pressed: i === s.interest ? 'true' : 'false', pick: function () { if (self.state.interest !== i) self.setState(function (st) { return { interest: i, iflip: st.iflip + 1 }; }); } }; });
+    var cells = []; for (var c = 0; c < 24; c++) cells.push({ cls: c < 6 ? 'f' : '' });
+    var bars = this.bars.map(function (b, i) { return { h: b.h + '%', cls: (b.note ? 'k ' : '') + (i === s.minute ? 'on' : ''), aria: 'Minute ' + (i + 1), pick: function () { if (self.state.minute !== i) self.setState({ minute: i }); } }; });
+    var bm = this.bars[s.minute];
+    var nearest = null;
+    if (!bm.note) { for (var off = 1; off < 40 && !nearest; off++) { if (this.bars[s.minute - off] && this.bars[s.minute - off].note) nearest = s.minute - off; } }
+    var minNote = bm.note || (bm.h >= 70 ? 'Fully engaged. Answering on his own.' : bm.h >= 45 ? 'Working through a question with the teacher.' : 'A slower minute. The teacher stepped in.');
+    var cities = this.cityData.map(function (c) {
+      var t = '--:--', h = 0;
+      try { t = new Date(s.now).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: c[1] }); h = parseInt(t.slice(0, 2), 10); } catch (e) {}
+      var after = h >= 15 && h < 20;
+      return { name: c[0], time: t, cls: after ? 'after' : '', st: after ? 'After school now' : (h >= 7 && h < 15 ? 'School hours' : 'Asleep, probably') };
+    });
+    var sp = s.segPos;
+    var vh = s.vh;
+    return {
+      accent: this.props.accent ?? '#FFD23F',
+      auds: auds,
+      pillL: (sp[idx * 2] || 4) + 'px', pillW: (sp[idx * 2 + 1] || 80) + 'px',
+      navCta: A.cta,
+      doors: doors,
+      pickedNote: s.touched ? 'Got it. This page now speaks to ' + (s.aud === 'maker' ? 'curriculum makers' : s.aud + 's') + '.' : '',
+      ttCls: s.wide ? 'wide' : '',
+      ttH: s.wide ? Math.round(vh * 5 * 0.7 + vh) + 'px' : 'auto',
+      pinH: s.wide ? vh + 'px' : 'auto',
+      tx: s.tx + 'px',
+      pw: s.pw + 'px',
+      periods: periods,
+      desks: desks,
+      nudges: nudges,
+      quietCls: curN === 1 ? 'quiet' : '',
+      interests: interests,
+      question: this.intData[s.interest].q,
+      qColor: this.intData[s.interest].color,
+      qCls: s.iflip % 2 === 0 ? 'qa' : 'qb',
+      cells: cells,
+      bars: bars,
+      minLabel: 'Min ' + (s.minute + 1),
+      minNote: minNote,
+      cities: cities,
+      fyLab: A.lab, fyHead: A.head, fyLede: A.lede,
+      fyItems: A.items.map(function (t, i) { return { n: String(i + 1), t: t }; }),
+      fyCls: s.flip % 2 === 0 ? 'fyswap' : 'fyswap2',
+      fyCls2: s.flip % 2 === 0 ? 'fyswap' : 'fyswap2',
+      isParent: s.aud === 'parent', isTeacher: s.aud === 'teacher', isMaker: s.aud === 'maker',
+      rcCls: s.rc ? 'go' : '',
+      raiseHead: A.raise,
+      handHint: s.sent ? 'gold star!' : A.hint,
+      handCls: s.sent ? 'up' : '',
+      audWord: A.word,
+      sent: s.sent, notSent: !s.sent,
+      submit: function (e) { if (e && e.preventDefault) e.preventDefault(); self.setState({ sent: true }); },
+      footCls: s.ring ? 'ring' : ''
+    };
+  }
+}
+</script>
+</body>
+</html>

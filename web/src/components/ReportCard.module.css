@@ -1,0 +1,37 @@
+.report { background: #F4F7FB; border-block: 3px double var(--ink); }
+.rc { border-radius: 8px; background: #FFFFFF; box-shadow: 0 0 0 1.5px var(--ink), 8px 8px 0 var(--ink); overflow: hidden; }
+.rchead { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; padding: 22px 26px; border-bottom: 3px double var(--ink); }
+.who { display: flex; align-items: center; gap: 20px; }
+.photo { flex: none; width: 104px; height: 104px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px var(--ink), 4px 4px 0 2px var(--hi); }
+.rchead h3 { font-size: clamp(26px, 2.8vw, 38px); }
+.rctbl { overflow-x: auto; }
+.rrow { display: grid; grid-template-columns: 200px 190px minmax(0, 1fr); min-width: 640px; border-bottom: 1px solid var(--rule); }
+.rrow > div { padding: 16px 22px; border-right: 1px solid var(--rule); }
+.rrow > div:last-child { border-right: 0; }
+.rrow.h > div { padding-block: 10px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink3); }
+.s { font-weight: 700; }
+.w { font-family: var(--hand); font-size: 24px; color: var(--blue); line-height: 1.1; }
+.r { color: var(--ink2); font-size: 15.5px; }
+.go .rrow { animation: rowin .5s var(--ease) both; }
+.go .rrow:nth-child(3) { animation-delay: .08s; }
+.go .rrow:nth-child(4) { animation-delay: .16s; }
+.go .rrow:nth-child(5) { animation-delay: .24s; }
+.go .rrow:nth-child(6) { animation-delay: .32s; }
+.go .rrow:nth-child(7) { animation-delay: .4s; }
+.go .rrow.h { animation: none; }
+.remark { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: end; padding: 22px 26px; }
+.remark :global(.hand) { font-size: clamp(26px, 2.6vw, 34px); color: var(--ink); }
+.sign { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.sign svg path { fill: none; stroke: var(--blue); stroke-width: 2.2; stroke-linecap: round; stroke-dasharray: 300; stroke-dashoffset: 300; transition: stroke-dashoffset 1.4s var(--ease) .5s; }
+.go .sign svg path { stroke-dashoffset: 0; }
+
+/* rows rest fully visible and fade in from .2 when triggered, so they also read without JavaScript */
+@keyframes rowin { from { opacity: .2; transform: translateX(-10px); } }
+
+@media (max-width: 620px) {
+  .photo { width: 80px; height: 80px; }
+  .remark { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sign svg path { stroke-dashoffset: 0; }
+}

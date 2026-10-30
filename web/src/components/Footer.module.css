@@ -1,0 +1,33 @@
+.foot { position: relative; background: var(--chalk); color: var(--onChalk); padding-block: 96px 0; overflow: hidden; border-top: 14px solid #8A5A35; }
+.foot::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.06), transparent 60%), radial-gradient(ellipse at 80% 80%, rgba(255,255,255,.04), transparent 50%); pointer-events: none; }
+.fgrid { position: relative; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+.chalkh { font-family: var(--hand); font-weight: 700; font-size: clamp(64px, 9vw, 140px); line-height: .9; color: #FFFFFF; }
+.chalkh > span { display: inline-block; clip-path: inset(0 100% 0 0); transition: clip-path 1.2s var(--ease); }
+.ring .chalkh > span { clip-path: inset(0 -5% 0 0); }
+.bell { display: inline-block; transform-origin: 50% 8%; margin-left: 12px; vertical-align: middle; }
+.ring .bell { animation: ring 1.4s ease-in-out 2; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #FFFFFF; }
+.logo:hover { color: #FFFFFF; }
+.wm { font-family: var(--disp); font-weight: 900; font-size: 22px; letter-spacing: -.03em; line-height: 1; }
+.wm span { color: var(--hi); }
+.tom { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 1.5px solid rgba(234,242,236,.4); }
+.tom li { border-bottom: 1px dashed rgba(234,242,236,.3); }
+.tom a { display: grid; grid-template-columns: 70px minmax(0, 1fr) auto; gap: 14px; align-items: center; min-height: 52px; text-decoration: none; color: var(--onChalk); font-size: 17px; transition: padding .3s var(--ease), color .2s; }
+.tom a:hover { padding-left: 10px; color: var(--hi); }
+.t { font-family: var(--mono); font-size: 12px; color: #B9CDC1; }
+.mail { color: #CFE0D5; text-decoration: none; }
+.mail:hover { color: #FFFFFF; }
+.tray { position: relative; margin-top: 72px; height: 30px; background: #7A4E2E; box-shadow: inset 0 6px 0 rgba(0,0,0,.2); }
+.tray i { position: absolute; bottom: 20px; height: 10px; border-radius: 3px; display: block; }
+.legal { position: relative; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; background: #6B4428; color: #F1DEC9; padding: 16px clamp(30px, 6vw, 88px) 26px; font-family: var(--mono); font-size: 11.5px; }
+.legal a { color: #F1DEC9; text-decoration: none; }
+.legal a:hover { color: #FFFFFF; }
+
+@keyframes ring { 0%, 100% { transform: rotate(0); } 10% { transform: rotate(18deg); } 20% { transform: rotate(-16deg); } 30% { transform: rotate(12deg); } 40% { transform: rotate(-10deg); } 50% { transform: rotate(6deg); } 60% { transform: rotate(-3deg); } }
+
+@media (max-width: 1000px) {
+  .fgrid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chalkh > span { clip-path: none; }
+}

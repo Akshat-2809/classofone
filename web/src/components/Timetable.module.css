@@ -1,0 +1,112 @@
+.tt { position: relative; background: #F4F7FB; border-block: 3px double var(--ink); }
+.ttpin { display: flex; flex-direction: column; overflow: hidden; }
+.tthead { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding-block: 96px 22px; width: 100%; }
+.tthead h2 { font-size: clamp(34px, 4vw, 56px); }
+.pers { display: flex; gap: 4px; flex-wrap: wrap; }
+.per { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-width: 92px; min-height: 48px; padding: 6px 12px; border-radius: 10px; border: 0; background: #FFFFFF; box-shadow: inset 0 0 0 1px var(--rule); cursor: pointer; text-align: left; font: inherit; color: var(--ink2); transition: all .3s; }
+.t { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; }
+.per b { font-size: 13.5px; font-weight: 700; color: var(--ink); }
+.per.on { background: var(--ink); box-shadow: none; }
+.per.on .t, .per.on b { color: #FFFFFF; }
+.per.done { box-shadow: inset 0 0 0 1.5px var(--ink); }
+/* clip rather than hidden: focus can't scroll it, so only the scroll position moves the track */
+.ttwin { flex: 1; min-height: 0; overflow: clip; padding-bottom: 40px; container-type: inline-size; }
+.tttrack { display: flex; flex-direction: column; gap: 28px; padding-inline: clamp(30px, 6vw, 88px); }
+.panel { flex: none; width: 100%; scroll-margin-top: var(--nav-offset); border-radius: 20px; background: #FFFFFF; box-shadow: inset 0 0 0 1.5px var(--ink), 0 6px 0 var(--ink); padding: 32px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; align-items: center; position: relative; overflow: hidden; }
+.pt { display: flex; flex-direction: column; gap: 14px; }
+.panel h3 { font-size: clamp(32px, 3.4vw, 50px); }
+.panel p { color: var(--ink2); font-size: 17.5px; max-width: 42ch; }
+.ptag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+.ptag b { background: var(--hi); padding: 3px 8px; border-radius: 5px; font-weight: 500; }
+.ill { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); }
+.recess { background: var(--hi); }
+
+/* wide: pinned to the viewport, panning sideways. These replace the design's JS-measured heights, so nothing shifts on load. */
+@media (min-width: 900px) {
+  :global(.co) .tt { scroll-margin-top: 0; }
+  .tt { height: 450vh; }
+  .ttpin { position: sticky; top: 0; height: 100vh; }
+  .tttrack { flex-direction: row; will-change: transform; }
+  .panel { width: min(1060px, 84cqw); grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); min-height: 440px; }
+}
+
+/* P1 desks */
+.desks { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; padding: 18px; border-radius: 14px; background: #F4F7FB; }
+.desk { aspect-ratio: 1.2; border-radius: 6px; background: #FFFFFF; box-shadow: inset 0 0 0 1.5px var(--rule); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 4px; }
+.desk i { width: 40%; aspect-ratio: 1; border-radius: 50%; background: #C9D3E2; display: block; transition: background .4s, transform .4s var(--spring); }
+.desk.me i { background: var(--margin); transform: scale(1.2); }
+.board { grid-column: 1 / -1; height: 38px; border-radius: 6px; background: var(--chalk); color: var(--onChalk); display: flex; align-items: center; justify-content: center; font-family: var(--hand); font-size: 22px; }
+
+/* P2 class view */
+.cls { border-radius: 16px; background: var(--ink); padding: 14px; display: flex; flex-direction: column; gap: 12px; color: #FFFFFF; }
+.tiles { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 10px; }
+.tile { position: relative; aspect-ratio: 4 / 3; border-radius: 12px; background: #24314F; display: flex; align-items: center; justify-content: center; }
+.av { width: 62px; height: 62px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--disp); font-weight: 800; font-size: 22px; color: var(--ink); }
+.nm { position: absolute; left: 10px; bottom: 8px; font-family: var(--mono); font-size: 10.5px; color: #C6D0E2; }
+.live { position: absolute; right: 10px; top: 8px; font-family: var(--mono); font-size: 10px; padding: 2px 7px; border-radius: 999px; background: var(--red); }
+.quiet { box-shadow: inset 0 0 0 2px var(--hi); }
+.nudges { display: flex; flex-direction: column; gap: 8px; min-height: 150px; }
+.nudge { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 10px; background: #FFFFFF; color: var(--ink); font-size: 14px; line-height: 1.35; animation: pop .5s var(--spring) both; }
+.ic { flex: none; width: 26px; height: 26px; border-radius: 8px; background: var(--hi); display: flex; align-items: center; justify-content: center; }
+.nudge.old { opacity: .55; animation: none; }
+
+/* P3 lesson */
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { min-height: 44px; padding: 0 16px; border-radius: 999px; border: 0; background: #FFFFFF; box-shadow: inset 0 0 0 1.5px var(--ink); font: 700 14.5px var(--body); color: var(--ink); cursor: pointer; transition: all .3s var(--spring); }
+.chip:hover { transform: translateY(-2px); }
+.chip.on { background: var(--ink); color: #FFFFFF; }
+.ws { position: relative; border-radius: 14px; padding: 20px 20px 20px 46px; display: flex; flex-direction: column; gap: 14px; box-shadow: inset 0 0 0 1.5px var(--rule); }
+.panel .q { font-size: 18px; line-height: 1.45; min-height: 5.4em; animation: swap .55s var(--ease) both; }
+.grid24 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 5px; }
+.grid24 i { aspect-ratio: 1; border-radius: 4px; background: #E4EAF3; display: block; transition: background .4s; }
+.grid24 i.f { background: var(--qc); }
+.ans { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.frac { font-family: var(--disp); font-weight: 800; font-size: 34px; }
+.ok { position: absolute; right: 16px; top: -14px; transform: rotate(8deg); font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding: 6px 10px; border-radius: 6px; color: var(--green); background: #FFFFFF; box-shadow: inset 0 0 0 2px var(--green); display: flex; align-items: center; gap: 6px; }
+
+/* P4 parent window */
+.pw { border-radius: 16px; padding: 18px; background: #F4F7FB; display: flex; flex-direction: column; gap: 14px; }
+.bars { position: relative; display: grid; grid-template-columns: repeat(40, minmax(0, 1fr)); gap: 3px; align-items: end; height: 130px; border-bottom: 1.5px solid var(--ink); }
+.bar { display: block; border-radius: 3px 3px 0 0; background: #C3CEDF; transition: background .2s, transform .3s var(--spring); transform-origin: bottom; min-height: 4px; }
+.bar.on { background: var(--margin); transform: scaleX(1.4); }
+.bar.k { background: #8FA4C4; }
+.bar.k.on { background: var(--margin); }
+.barsInput { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.bars:has(.barsInput:focus-visible) { outline: 3px solid var(--blue); outline-offset: 3px; }
+.mins { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10.5px; color: var(--ink3); }
+.note { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 12px; background: #FFFFFF; box-shadow: inset 0 0 0 1px var(--rule); }
+.note b { font-family: var(--disp); font-weight: 800; font-size: 24px; line-height: 1; color: var(--margin); flex: none; min-width: 58px; }
+
+/* recess */
+.stickies { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.sticky { background: #FFFFFF; padding: 18px; border-radius: 4px; box-shadow: 0 12px 20px -14px rgba(23,34,58,.5); display: flex; flex-direction: column; gap: 10px; transition: transform .4s var(--spring); }
+.sticky:nth-child(1) { transform: rotate(-2.5deg); }
+.sticky:nth-child(2) { transform: rotate(2deg); }
+.sticky:hover { transform: rotate(0) scale(1.03); }
+.big { font-family: var(--disp); font-weight: 900; font-size: 40px; line-height: .95; }
+.panel .sticky p { font-size: 15px; color: var(--ink); }
+
+/* P5 clocks */
+.cities { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.city { border-radius: 12px; padding: 14px; background: #F4F7FB; display: flex; flex-direction: column; gap: 2px; }
+.city b { font-family: var(--disp); font-weight: 800; font-size: 22px; }
+.tm { font-family: var(--mono); font-size: 20px; font-variant-numeric: tabular-nums; }
+.st { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink3); }
+.city.after { background: var(--ink); color: #FFFFFF; }
+.city.after .st { color: var(--hi); }
+
+@keyframes pop { from { opacity: 0; transform: translateY(10px) scale(.95); } }
+@keyframes swap { from { opacity: 0; transform: translateY(12px); } }
+
+@media (max-width: 1000px) {
+  .tthead { padding-block: 56px 20px; }
+}
+@media (max-width: 620px) {
+  .cities { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stickies { grid-template-columns: minmax(0, 1fr); }
+  .panel { padding: 22px; }
+  .nudge { min-height: 77px; }
+}
+@media (max-width: 360px) {
+  .nudge { min-height: 96px; }
+}

@@ -1,0 +1,79 @@
+.page { padding-block: 64px 110px; }
+.head { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 48px; }
+.title { font-size: clamp(56px, 8.4vw, 128px); line-height: .92; letter-spacing: -.045em; }
+.note { font-size: 34px; transform: rotate(-2deg); transform-origin: left; }
+
+/* the short version, as a report card */
+.card { border-radius: 8px; background: #FFFFFF; box-shadow: 0 0 0 1.5px var(--ink), 8px 8px 0 var(--ink); overflow: hidden; }
+.cardHead { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; padding: 22px 26px; border-bottom: 3px double var(--ink); }
+.cardHead h2 { font-size: clamp(26px, 2.8vw, 38px); }
+.rows { margin: 0; }
+.row { display: grid; grid-template-columns: 240px minmax(0, 1fr); border-bottom: 1px solid var(--rule); }
+.row:last-child { border-bottom: 0; }
+.row dt, .row dd { margin: 0; padding: 14px 26px; }
+.row dt { font-family: var(--hand); font-size: 26px; font-weight: 700; color: var(--blue); line-height: 1.15; border-right: 1px solid var(--rule); }
+.row dd { color: var(--ink2); }
+
+.layout { display: grid; grid-template-columns: minmax(0, 280px) minmax(0, 1fr); gap: 40px; align-items: start; margin-top: 64px; }
+
+/* contents: a little timetable */
+.toc { position: sticky; top: 96px; }
+.tocBox { background: #FFFFFF; border-radius: 18px; padding: 20px 22px; box-shadow: inset 0 0 0 1.5px var(--ink), 0 6px 0 var(--ink); }
+.tocBox summary { font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink3); cursor: pointer; list-style: none; margin-bottom: 10px; }
+.tocBox summary::-webkit-details-marker { display: none; }
+.tocBox ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.tocBox li + li a { border-top: 1px dashed var(--rule); }
+.tocBox a { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 8px; align-items: baseline; padding: 7px 0; font-size: 14.5px; line-height: 1.35; font-weight: 700; color: var(--ink2); text-decoration: none; transition: color .2s, padding .25s var(--ease); }
+.tocBox a:hover { color: var(--ink); padding-left: 6px; }
+.tocNum { font-family: var(--hand); font-size: 22px; line-height: 1; color: var(--margin); }
+
+/*
+ * The notebook sheet. Everything on it sits on a 32px rhythm, so text rests on
+ * the ruled lines: line-heights and gaps below are all multiples of 32px.
+ */
+.sheet {
+  --gutter: 72px;
+  min-width: 0;
+  border-radius: 6px 18px 18px 6px;
+  padding: 32px 36px 64px var(--gutter);
+  box-shadow: inset 0 0 0 1.5px var(--ink), 0 6px 0 var(--ink);
+  background-color: #FFFFFF;
+  background-image:
+    linear-gradient(90deg, transparent 0 calc(var(--gutter) - 16px), var(--margin) calc(var(--gutter) - 16px), var(--margin) calc(var(--gutter) - 14.5px), transparent calc(var(--gutter) - 14.5px)),
+    repeating-linear-gradient(180deg, transparent 0 31px, var(--rule) 31px 32px);
+  background-position: 0 0, 0 -8px;
+  color: var(--ink2);
+  line-height: 32px;
+}
+.section { position: relative; padding-bottom: 32px; }
+.num { position: absolute; left: -60px; top: 0; width: 36px; text-align: right; font-family: var(--hand); font-size: 34px; font-weight: 700; line-height: 64px; color: var(--margin); }
+.section h2 { font-size: clamp(26px, 2.6vw, 34px); line-height: 64px; letter-spacing: -.02em; color: var(--ink); text-wrap: pretty; }
+.section h3 { font-size: 19px; line-height: 32px; letter-spacing: -.01em; color: var(--ink); margin-top: 32px; }
+.section p { font-size: 17px; line-height: 32px; }
+.section p + p { margin-top: 32px; }
+.section ul { list-style: none; margin: 0; padding: 0; font-size: 17px; line-height: 32px; }
+.section ul > li { position: relative; padding-left: 26px; }
+.section ul > li::before { content: "–"; position: absolute; left: 4px; font-family: var(--hand); font-size: 24px; font-weight: 700; color: var(--margin); }
+.section ul + p, .section p + ul { margin-top: 0; }
+.section ul + p { margin-top: 32px; }
+.section b { color: var(--ink); font-weight: 700; }
+.section a { color: var(--ink); text-decoration-color: var(--hi); text-decoration-thickness: 3px; text-underline-offset: 3px; }
+
+/* a sticky note on the page, for the part people need to find */
+.stuck { margin-top: 32px; padding: 16px 20px; background: var(--hi); color: var(--ink); border-radius: 4px; box-shadow: 0 12px 20px -14px rgba(23,34,58,.5); transform: rotate(-.6deg); }
+.section .stuck p + p { margin-top: 0; }
+
+@media (max-width: 1000px) {
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 32px; margin-top: 48px; }
+  .toc { position: static; }
+  .tocBox summary { margin-bottom: 0; }
+  .tocBox[open] summary { margin-bottom: 10px; }
+}
+@media (max-width: 620px) {
+  .row { grid-template-columns: minmax(0, 1fr); }
+  .row dt { border-right: 0; padding-bottom: 0; }
+  .row dd { padding-top: 4px; }
+  .sheet { --gutter: 46px; padding-right: 18px; }
+  .num { left: -46px; width: 24px; font-size: 28px; }
+  .section h2 { line-height: 32px; padding-block: 16px; }
+}

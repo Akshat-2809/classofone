@@ -1,0 +1,15 @@
+.fy { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 56px; align-items: start; }
+.fyswap { animation: swap .6s var(--ease) both; }
+.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 1.5px solid var(--ink); }
+.list li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--rule); font-size: 17px; }
+.n { font-family: var(--hand); font-size: 28px; font-weight: 700; color: var(--margin); line-height: 1; }
+.subj { display: flex; flex-wrap: wrap; gap: 8px; }
+.subj span { padding: 8px 14px; border-radius: 8px; background: #FFFFFF; box-shadow: inset 0 0 0 1.5px var(--ink); font-weight: 700; font-size: 14.5px; }
+.stip { display: flex; align-items: baseline; gap: 12px; padding: 18px 20px; border-radius: 14px; background: var(--hi); margin-top: 6px; }
+.stip b { font-family: var(--disp); font-weight: 900; font-size: 34px; }
+
+@keyframes swap { from { opacity: 0; transform: translateY(12px); } }
+
+@media (max-width: 1000px) {
+  .fy { grid-template-columns: minmax(0, 1fr); }
+}

@@ -1,0 +1,23 @@
+.raise { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.form { position: relative; border-radius: 18px; background: #FFFFFF; box-shadow: inset 0 0 0 1.5px var(--ink), 0 6px 0 var(--ink); padding: 28px; display: flex; flex-direction: column; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink3); }
+.field input, .field select { min-height: 50px; border: 0; border-bottom: 2px solid var(--ink); border-radius: 0; padding: 0 4px; font: 500 18px var(--body); color: var(--ink); background: transparent; width: 100%; }
+.field input:focus, .field select:focus { outline: none; border-bottom-color: var(--margin); }
+.field [aria-invalid="true"] { border-bottom-color: var(--red); }
+.ferr { font-size: 14px; font-weight: 700; color: var(--red); }
+.form :global(.btn):disabled { cursor: progress; transform: none; opacity: .85; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.spin { width: 16px; height: 16px; border-radius: 50%; border: 2.5px solid rgba(255,255,255,.35); border-top-color: #FFFFFF; animation: spin .7s linear infinite; }
+.handwrap { position: relative; display: flex; align-items: center; justify-content: center; min-height: 300px; }
+.bighand { transform-origin: 50% 100%; transition: transform .8s var(--spring); }
+.up .bighand { transform: translateY(-30px) rotate(-6deg); }
+.star { position: absolute; top: 10%; right: 22%; transform: scale(0) rotate(-40deg); transition: transform .6s var(--spring) .4s; }
+.up .star { transform: scale(1) rotate(12deg); }
+.hint { position: absolute; bottom: 4px; font-family: var(--hand); font-size: 26px; color: var(--ink2); }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 1000px) {
+  .raise { grid-template-columns: minmax(0, 1fr); }
+}

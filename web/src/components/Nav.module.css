@@ -1,0 +1,28 @@
+.nav { position: sticky; top: 0; z-index: 60; background: rgba(251,252,254,.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 3px double var(--ink); }
+.navin { display: flex; align-items: center; gap: 20px; min-height: 70px; flex-wrap: wrap; padding-block: 8px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.logo:hover { color: var(--ink); }
+.wm { font-family: var(--disp); font-weight: 900; font-size: 24px; letter-spacing: -.03em; line-height: 1; }
+.wm span { color: var(--margin); }
+.who { flex: 1; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.whol { font-family: var(--hand); font-size: 22px; font-weight: 700; color: var(--ink2); }
+.seg { position: relative; display: flex; padding: 4px; border-radius: 12px; background: #EEF2F8; box-shadow: inset 0 0 0 1px var(--rule); }
+.seg button { position: relative; z-index: 1; min-height: 40px; padding: 0 14px; border: 0; background: transparent; font: 700 14px var(--body); color: var(--ink2); cursor: pointer; border-radius: 9px; transition: color .3s; }
+.seg button.on { color: #FFFFFF; }
+.pill { position: absolute; top: 4px; bottom: 4px; left: 4px; width: 72px; border-radius: 9px; background: var(--ink); transition: left .45s var(--spring), width .45s var(--spring); }
+.links { display: flex; align-items: center; gap: 16px; font-size: 15px; font-weight: 700; }
+.links a { color: var(--ink2); text-decoration: none; text-underline-offset: 4px; text-decoration-thickness: 2px; text-decoration-color: var(--hi); }
+.links a:hover { color: var(--ink); text-decoration-line: underline; }
+
+@media (max-width: 1000px) {
+  .who { justify-content: flex-start; }
+}
+@media (max-width: 620px) {
+  .whol { display: none; }
+  /* links share the logo's row, so the nav doesn't grow a fourth row */
+  .links { order: 1; margin-left: auto; gap: 12px; font-size: 14px; }
+  .who { order: 2; flex-basis: 100%; }
+  .who:empty { display: none; }
+  .cta { order: 3; }
+  .seg button { padding: 0 10px; font-size: 13px; }
+}

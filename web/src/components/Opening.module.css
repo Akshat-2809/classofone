@@ -1,0 +1,48 @@
+.open { position: relative; padding-block: 64px 90px; overflow: hidden; }
+.ogrid { display: grid; grid-template-columns: minmax(0, 1fr) 230px; gap: 40px; align-items: start; }
+.h1 { font-size: clamp(56px, 8.4vw, 128px); line-height: .92; letter-spacing: -.045em; }
+/* fade-ins start at .01, not 0, so Chrome can count the hero text as the LCP element */
+.h1 .w { display: inline-block; animation: write .9s var(--ease) both; }
+.h1 .w:nth-child(2) { animation-delay: .08s; }
+.h1 .w:nth-child(3) { animation-delay: .16s; }
+.h1 .w:nth-child(4) { animation-delay: .24s; }
+.h1 .w:nth-child(5) { animation-delay: .32s; }
+.h1 .w:nth-child(6) { animation-delay: .4s; }
+.one { position: relative; display: inline-block; color: var(--margin); }
+.one svg { position: absolute; inset: -14% -10% -8% -10%; width: 120%; height: 122%; overflow: visible; pointer-events: none; }
+.one path { fill: none; stroke: var(--margin); stroke-width: 3.5; stroke-linecap: round; stroke-dasharray: 640; stroke-dashoffset: 640; animation: draw 1.1s var(--ease) .9s forwards; }
+.mnote { display: flex; flex-direction: column; gap: 6px; padding-top: 30px; transform: rotate(-3deg); animation: fade 1s var(--ease) 1.2s both; }
+.mnote :global(.hand) { font-size: 34px; }
+.mnote svg { width: 110px; height: 60px; }
+.mnote path { fill: none; stroke: var(--margin); stroke-width: 2.5; stroke-linecap: round; }
+.olede { margin-top: 28px; animation: fade 1s var(--ease) .5s both; }
+.doorsh { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-top: 56px; }
+.doorsh h2 { font-size: clamp(28px, 3vw, 40px); }
+.doors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; margin-top: 22px; perspective: 1400px; }
+.door { position: relative; display: block; text-align: left; border: 0; cursor: pointer; padding: 0; background: transparent; transform-style: preserve-3d; font: inherit; color: inherit; }
+.cover { position: relative; aspect-ratio: 4 / 3.2; max-width: 100%; border-radius: 6px 14px 14px 6px; padding: 22px 22px 22px 34px; display: flex; flex-direction: column; justify-content: space-between; color: #FFFFFF; box-shadow: inset 10px 0 0 rgba(0,0,0,.18), 0 18px 30px -18px rgba(23,34,58,.6); transform-origin: left center; transition: transform .6s var(--spring), box-shadow .4s; }
+.cover::before { content: ""; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: rgba(255,255,255,.25); }
+.door:hover .cover { transform: rotateY(-14deg); }
+.door.on .cover { transform: rotateY(-22deg) translateX(4px); box-shadow: inset 10px 0 0 rgba(0,0,0,.18), 0 0 0 4px var(--hi), 0 26px 40px -18px rgba(23,34,58,.7); }
+.label { background: #FFFFFF; color: var(--ink); border-radius: 6px; padding: 12px 14px; box-shadow: 0 2px 0 rgba(0,0,0,.12); display: flex; flex-direction: column; gap: 2px; max-width: 88%; }
+.label :global(.lab) { font-size: 10px; }
+.label b { font-family: var(--disp); font-size: clamp(22px, 2.2vw, 30px); line-height: 1.05; letter-spacing: -.02em; }
+.ln { border-bottom: 1.5px solid var(--rule); font-family: var(--hand); font-size: 22px; color: var(--blue); line-height: 1.2; }
+.sub { font-size: 15.5px; line-height: 1.4; max-width: 30ch; color: #FFFFFF; }
+.tick { position: absolute; right: -12px; top: -14px; width: 56px; height: 56px; border-radius: 50%; background: var(--hi); display: flex; align-items: center; justify-content: center; transform: scale(0) rotate(-30deg); transition: transform .45s var(--spring); box-shadow: 0 6px 14px -6px rgba(0,0,0,.4); }
+.door.on .tick { transform: scale(1) rotate(-8deg); }
+.picked { margin-top: 22px; font-family: var(--hand); font-size: 26px; color: var(--blue); min-height: 34px; }
+
+@keyframes write { from { opacity: .01; transform: translateY(30px) rotate(-3deg); filter: blur(4px); } }
+@keyframes fade { from { opacity: .01; transform: translateY(14px); } }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+@media (max-width: 1000px) {
+  .ogrid { grid-template-columns: minmax(0, 1fr); }
+  .mnote { padding-top: 0; }
+  .doors { grid-template-columns: minmax(0, 1fr); }
+  .cover { aspect-ratio: auto; min-height: 220px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .one path { stroke-dashoffset: 0; }
+}
