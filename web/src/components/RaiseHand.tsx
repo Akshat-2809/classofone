@@ -1,10 +1,11 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { raiseHand } from "@/app/actions/raise";
 import { ACCENT, FOUNDER_NAME } from "@/lib/site";
 import { AUDIENCE_DATA, CHILD_CLASSES, SUBJECTS } from "@/lib/audience";
 import { useAudience } from "@/lib/audienceStore";
+import { useRaiseDraft } from "@/lib/raise/draft";
 import type { RaiseField, RaiseState } from "@/lib/raise/schema";
 import styles from "./RaiseHand.module.css";
 
@@ -14,6 +15,13 @@ export function RaiseHand() {
   const { aud } = useAudience();
   const [state, formAction, pending] = useActionState(raiseHand, initialState);
   const A = AUDIENCE_DATA[aud];
+  const draftEmail = useRaiseDraft();
+  const nameRef = useRef<HTMLInputElement>(null);
+
+  // Arrived from the footer box with an email: the name is the next thing to fill in.
+  useEffect(() => {
+    if (draftEmail) nameRef.current?.focus({ preventScroll: true });
+  }, [draftEmail]);
 
   // Signing up as a parent says nothing about teaching: switching audience brings the form back.
   const sent = state.status === "success" && state.audience === aud;
@@ -43,14 +51,14 @@ export function RaiseHand() {
               <input type="hidden" name="audience" value={aud} />
               <div className={styles.field}>
                 <label htmlFor="r-name">Your name</label>
-                <input id="r-name" name="name" type="text" autoComplete="name" placeholder="Write your name" required maxLength={120}
+                <input ref={nameRef} id="r-name" name="name" type="text" autoComplete="name" placeholder="Write your name" required maxLength={120}
                   defaultValue={value("name")} aria-invalid={!!fieldError("name")} aria-describedby={describe("name")} />
                 {errorOf("name")}
               </div>
               <div className={styles.field}>
                 <label htmlFor="r-email">Email</label>
-                <input id="r-email" name="email" type="email" autoComplete="email" placeholder="you@email.com" required maxLength={254}
-                  defaultValue={value("email")} aria-invalid={!!fieldError("email")} aria-describedby={describe("email")} />
+                <input key={draftEmail} id="r-email" name="email" type="email" autoComplete="email" placeholder="you@email.com" required maxLength={254}
+                  defaultValue={value("email") ?? draftEmail} aria-invalid={!!fieldError("email")} aria-describedby={describe("email")} />
                 {errorOf("email")}
               </div>
               {aud === "parent" && (

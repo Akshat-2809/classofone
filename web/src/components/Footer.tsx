@@ -1,42 +1,60 @@
 import Link from "next/link";
 import { CONTACT_EMAIL } from "@/lib/site";
 import { AudienceText } from "./AudienceText";
+import { FooterWaitlist } from "./FooterWaitlist";
 import { LogoMark } from "./Logo";
-import { ScrollTrigger } from "./ScrollTrigger";
 import styles from "./Footer.module.css";
 
 export function Footer() {
   return (
-    <ScrollTrigger as="footer" className={styles.foot} activeClassName={styles.ring} at={0.75} id="bell">
+    <footer className={styles.foot}>
       <div className={`wrap ${styles.fgrid}`}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
-          <span className="lab" style={{ color: "#B9CDC1" }}>3:30 pm · last bell</span>
-          <p className={styles.chalkh}>
-            <span>School&apos;s out.</span>
-            <svg className={styles.bell} width="70" height="78" viewBox="0 0 70 78" aria-hidden="true">
-              <path d="M35 6 C 20 6, 14 20, 14 34 L 14 50 L 6 60 L 64 60 L 56 50 L 56 34 C 56 20, 50 6, 35 6 Z" fill="var(--hi)" stroke="#EAF2EC" strokeWidth="3" strokeLinejoin="round" />
-              <circle cx="35" cy="68" r="7" fill="#EAF2EC" />
-              <circle cx="35" cy="5" r="4" fill="#EAF2EC" />
-            </svg>
-          </p>
-          <p style={{ color: "#CFE0D5", maxWidth: "42ch", fontSize: 18 }}>Live one-on-one classes for school children. Humans first, always.</p>
-          <Link className={styles.logo} href="/#top" aria-label="Back to top">
+        <div className={styles.brand}>
+          <Link className={styles.logo} href="/#top" aria-label="Class of One home">
             <LogoMark size={34} />
             <span className={styles.wm}>class of <span>one</span></span>
           </Link>
+          <p className={styles.motto}>Humans first, always.</p>
+          <p className={styles.about}>Live one-on-one classes for school children.</p>
+          <p className={styles.info}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M12 21.5s7-6.6 7-12a7 7 0 1 0-14 0c0 5.4 7 12 7 12Z" />
+              <circle cx="12" cy="9.5" r="2.5" />
+            </svg>
+            Bengaluru, India
+          </p>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-          <span className="hand" style={{ color: "#FFFFFF", fontSize: 32 }}>Tomorrow&apos;s timetable</span>
-          <ul className={styles.tom}>
-            <li><Link href="/#top"><span className={styles.t}>9:00</span><span>Who&apos;s reading?</span><span aria-hidden="true">→</span></Link></li>
-            <li><Link href="/#timetable"><span className={styles.t}>10:00</span><span>A school day, rebuilt</span><span aria-hidden="true">→</span></Link></li>
-            <li><Link href="/#for-you"><span className={styles.t}>11:00</span><span><AudienceText field="lab" /></span><span aria-hidden="true">→</span></Link></li>
-            <li><Link href="/#report"><span className={styles.t}>12:00</span><span>The founder&apos;s report card</span><span aria-hidden="true">→</span></Link></li>
-            <li><Link href="/#raise"><span className={styles.t}>1:00</span><span>Raise your hand</span><span aria-hidden="true">→</span></Link></li>
+
+        <nav aria-labelledby="f-explore">
+          <h2 className={styles.head} id="f-explore">Explore</h2>
+          <ul className={styles.list}>
+            <li><Link href="/#top">Home</Link></li>
+            <li><Link href="/#timetable">A school day, rebuilt</Link></li>
+            <li><Link href="/#for-you"><AudienceText field="lab" /></Link></li>
+            <li><Link href="/#report">The founder&apos;s report card</Link></li>
+            <li><Link href="/contact">Contact</Link></li>
           </ul>
-          <span style={{ fontFamily: "var(--mono)", fontSize: 13, color: "#CFE0D5" }}>
-            <a className={styles.mail} href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> · Bengaluru
-          </span>
+        </nav>
+
+        <nav aria-labelledby="f-policies">
+          <h2 className={styles.head} id="f-policies">Policies</h2>
+          <ul className={styles.list}>
+            <li><Link href="/privacy">Privacy Policy</Link></li>
+            <li><Link href="/terms">Terms of Service</Link></li>
+          </ul>
+        </nav>
+
+        <div className={styles.raise}>
+          <h2 className={styles.head}>Raise your hand</h2>
+          <p className={styles.about}>Join the waitlist. Pratik will reach out personally.</p>
+          <FooterWaitlist />
+          <a className={styles.info} href={`mailto:${CONTACT_EMAIL}`}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2.5" />
+              <path d="m4 7 8 6 8-6" />
+            </svg>
+            {CONTACT_EMAIL}
+          </a>
         </div>
       </div>
       <div className={styles.tray} aria-hidden="true">
@@ -46,11 +64,9 @@ export function Footer() {
         <i style={{ left: "80%", width: 52, background: "#F6B7A9" }} />
       </div>
       <div className={styles.legal}>
-        <span>© 2026 Class of One · Bengaluru</span>
-        <span>
-          <Link href="/contact">Contact</Link> · <Link href="/#top">Back to the top ↑</Link>
-        </span>
+        <span>© 2026 Class of One</span>
+        <Link href="/#top">Back to the top ↑</Link>
       </div>
-    </ScrollTrigger>
+    </footer>
   );
 }

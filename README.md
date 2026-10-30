@@ -45,7 +45,7 @@ Sections are Server Components and ship no JavaScript, except the interactive pi
 | For you | `ForYou` | client: follows the audience |
 | Report card | `ReportCard` (server), with `ScrollTrigger` | client: trigger only |
 | Raise your hand | `RaiseHand` | client: form |
-| Footer | `Footer` (server), with `ScrollTrigger` and `AudienceText` | client: those two |
+| Footer | `Footer` (server), with `FooterWaitlist` and `AudienceText` | client: those two |
 
 ## Placeholders still to replace
 
@@ -140,11 +140,12 @@ To send email: in Resend, **Domains → Add Domain** → `getclassofone.com`, ad
 Compared side by side in Chrome at 1440px and 390px:
 - **Layout:** every section has the same top and height as in the design at 1440px, except the report card, which is taller for the photo. At 390px the page is also slightly taller, for the nudge change below.
 - **Pixel difference:** 0.00% on most sections. The rest comes from animations caught at a different moment and the live clocks.
-- **Interactions:** all checked in the browser (notebooks, nav switch, pinned timetable and period buttons, nudges, interest chips, minutes chart, clocks, report card, last bell, form states).
+- **Interactions:** all checked in the browser (notebooks, nav switch, pinned timetable and period buttons, nudges, interest chips, minutes chart, clocks, report card, form states).
 
 Intentional differences:
 - **Waitlist is real.** The design's form only flipped to a thank-you. It now validates and stores. After signing up as a parent, switching to Teacher brings the form back rather than claiming "You're on the list as a teacher".
-- **Pages added:** Privacy and Terms are real pages, linked from the navbar only (moved from the footer's legal row). A "Contact" link and page were added to the footer, and the email is a `mailto:` link. Nav and footer links point to `/#section`, so they work from every page. The "I'm a…" switch shows only on the homepage.
+- **Pages added:** Privacy and Terms are real pages, linked from the navbar and the footer. A Contact page was added, and the email is a `mailto:` link. Nav and footer links point to `/#section`, so they work from every page. The "I'm a…" switch shows only on the homepage.
+- **Footer redesigned:** the design's "School's out" bell and "Tomorrow's timetable" list became four columns (brand, Explore, Policies, Raise your hand), keeping the chalkboard and wooden ledge. The email box stores nothing itself: it carries the email to the "Raise my hand" form, which still needs a name and one detail.
 - **Founder photo** replaces the `[Founder photo]` placeholder in the report card, which makes the card's header taller than in the design.
 - **Timetable sizing is CSS, not JavaScript** (`450vh` + a sticky `100vh` pin, at 900px and up), so nothing shifts on load. Same numbers as the design.
 - **Minutes chart:** 40 tiny buttons became one slider over the chart. It looks and hovers the same, passes touch-target checks, and takes arrow keys instead of 40 tab stops.
