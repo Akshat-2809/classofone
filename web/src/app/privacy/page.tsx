@@ -107,7 +107,7 @@ const SECTIONS: LegalSection[] = [
       <>
         <p>Our team, and only where needed:</p>
         <ul>
-          <li><b>Vercel Inc.,</b> which hosts the website and keeps its request logs.</li>
+          <li><b>Our hosting provider,</b> which runs the website and keeps its request logs.</li>
           <li><b>Our mailbox provider,</b> which holds the emails you send us.</li>
           <li><b>Professional advisers,</b> such as lawyers and auditors, under a duty of confidentiality.</li>
           <li><b>Authorities and courts,</b> where the law requires it or to protect our legal rights.</li>
