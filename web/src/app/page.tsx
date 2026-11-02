@@ -5,7 +5,7 @@ import { Opening } from "@/components/Opening";
 import { RaiseHand } from "@/components/RaiseHand";
 import { ReportCard } from "@/components/ReportCard";
 import { Timetable } from "@/components/Timetable";
-import { CONTACT_EMAIL, FOUNDER_NAME, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import { CONTACT_EMAIL, FOUNDER_LINKEDIN, FOUNDER_NAME, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -16,7 +16,7 @@ const jsonLd = {
   email: CONTACT_EMAIL,
   description: SITE_DESCRIPTION,
   slogan: "Every child deserves a class of one.",
-  founder: { "@type": "Person", name: FOUNDER_NAME, jobTitle: "Founder & Product Builder" },
+  founder: { "@type": "Person", name: FOUNDER_NAME, jobTitle: "Founder & Product Builder", sameAs: [FOUNDER_LINKEDIN] },
   address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressCountry: "IN" },
 };
 

@@ -5,5 +5,6 @@ export const SITE_DESCRIPTION =
   "Live one-on-one classes for school children, taught by brilliant teachers and made superhuman by the AI working quietly behind them.";
 export const CONTACT_EMAIL = "hello@getclassofone.com";
 export const FOUNDER_NAME = "Pratik Vimal";
+export const FOUNDER_LINKEDIN = "https://www.linkedin.com/in/pratikvimal/";
 export const PARENT_SURVEY_URL = "https://lnkd.in/gPNZ_mMG";
 export const ACCENT = "#FFD23F";

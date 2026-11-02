@@ -1,19 +1,19 @@
 "use client";
 
-import { useActionState, useEffect, useRef } from "react";
-import { raiseHand } from "@/app/actions/raise";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { ACCENT, FOUNDER_NAME } from "@/lib/site";
-import { AUDIENCE_DATA, CHILD_CLASSES, SUBJECTS } from "@/lib/audience";
+import { AUDIENCE_DATA, CHILD_CLASSES, SUBJECTS, type Audience } from "@/lib/audience";
 import { useAudience } from "@/lib/audienceStore";
 import { useRaiseDraft } from "@/lib/raise/draft";
-import type { RaiseField, RaiseState } from "@/lib/raise/schema";
+import { RAISE_FIELDS, raiseSchema, type RaiseField, type RaiseState } from "@/lib/raise/schema";
 import styles from "./RaiseHand.module.css";
 
 const initialState: RaiseState = { status: "idle" };
+const DETAIL_ID: Record<Audience, string> = { parent: "r-class", teacher: "r-subj", maker: "r-lesson" };
 
 export function RaiseHand() {
   const { aud } = useAudience();
-  const [state, formAction, pending] = useActionState(raiseHand, initialState);
+  const [state, setState] = useState<RaiseState>(initialState);
   const A = AUDIENCE_DATA[aud];
   const draftEmail = useRaiseDraft();
   const nameRef = useRef<HTMLInputElement>(null);
@@ -26,10 +26,27 @@ export function RaiseHand() {
   // Signing up as a parent says nothing about teaching: switching audience brings the form back.
   const sent = state.status === "success" && state.audience === aud;
   const err = state.status === "error" ? state : null;
-  const fieldError = (f: RaiseField) => err?.fieldErrors?.[f];
-  const value = (f: RaiseField) => err?.values?.[f];
+  const fieldError = (f: RaiseField) => err?.fieldErrors[f];
   const describe = (f: RaiseField) => (fieldError(f) ? `r-${f}-err` : undefined);
   const errorOf = (f: RaiseField) => fieldError(f) && <span id={`r-${f}-err`} className={styles.ferr}>{fieldError(f)}</span>;
+
+  // Front end only: validates and shows the result on screen. Nothing is sent or stored.
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fields = e.currentTarget.elements;
+    const read = (id: string) => (fields.namedItem(id) as HTMLInputElement | HTMLSelectElement | null)?.value ?? "";
+    const parsed = raiseSchema.safeParse({ audience: aud, name: read("r-name"), email: read("r-email"), detail: read(DETAIL_ID[aud]) });
+    if (parsed.success) {
+      setState({ status: "success", audience: aud });
+      return;
+    }
+    const fieldErrors: Partial<Record<RaiseField, string>> = {};
+    for (const issue of parsed.error.issues) {
+      const key = issue.path[0] as RaiseField;
+      if (RAISE_FIELDS.includes(key) && !fieldErrors[key]) fieldErrors[key] = issue.message;
+    }
+    setState({ status: "error", message: "Please check the highlighted fields and try again.", fieldErrors });
+  }
 
   return (
     <section className="sec paper" id="raise">
@@ -44,27 +61,27 @@ export function RaiseHand() {
               <p style={{ color: "var(--ink2)" }}>You&apos;re on the list as a {A.word}.</p>
             </div>
           ) : (
-            <form className={styles.form} action={formAction} aria-busy={pending} noValidate>
+            // Fields have no name, so submitting before the page hydrates can't put them in the URL.
+            <form className={styles.form} onSubmit={onSubmit} noValidate>
               <p className="sr-only" aria-live="polite" role="status">
-                {pending ? "Raising your hand…" : err ? err.message : ""}
+                {err ? err.message : ""}
               </p>
-              <input type="hidden" name="audience" value={aud} />
               <div className={styles.field}>
                 <label htmlFor="r-name">Your name</label>
-                <input ref={nameRef} id="r-name" name="name" type="text" autoComplete="name" placeholder="Write your name" required maxLength={120}
-                  defaultValue={value("name")} aria-invalid={!!fieldError("name")} aria-describedby={describe("name")} />
+                <input ref={nameRef} id="r-name" type="text" autoComplete="name" placeholder="Write your name" required maxLength={120}
+                  aria-invalid={!!fieldError("name")} aria-describedby={describe("name")} />
                 {errorOf("name")}
               </div>
               <div className={styles.field}>
                 <label htmlFor="r-email">Email</label>
-                <input key={draftEmail} id="r-email" name="email" type="email" autoComplete="email" placeholder="you@email.com" required maxLength={254}
-                  defaultValue={value("email") ?? draftEmail} aria-invalid={!!fieldError("email")} aria-describedby={describe("email")} />
+                <input key={draftEmail} id="r-email" type="email" autoComplete="email" placeholder="you@email.com" required maxLength={254}
+                  defaultValue={draftEmail} aria-invalid={!!fieldError("email")} aria-describedby={describe("email")} />
                 {errorOf("email")}
               </div>
               {aud === "parent" && (
                 <div className={styles.field}>
                   <label htmlFor="r-class">Your child&apos;s class</label>
-                  <select id="r-class" name="detail" defaultValue={value("detail")} aria-invalid={!!fieldError("detail")} aria-describedby={describe("detail")}>
+                  <select id="r-class" aria-invalid={!!fieldError("detail")} aria-describedby={describe("detail")}>
                     {CHILD_CLASSES.map((c) => <option key={c}>{c}</option>)}
                   </select>
                   {errorOf("detail")}
@@ -73,7 +90,7 @@ export function RaiseHand() {
               {aud === "teacher" && (
                 <div className={styles.field}>
                   <label htmlFor="r-subj">Subject you teach</label>
-                  <select id="r-subj" name="detail" defaultValue={value("detail")} aria-invalid={!!fieldError("detail")} aria-describedby={describe("detail")}>
+                  <select id="r-subj" aria-invalid={!!fieldError("detail")} aria-describedby={describe("detail")}>
                     {SUBJECTS.map((c) => <option key={c}>{c}</option>)}
                   </select>
                   {errorOf("detail")}
@@ -82,18 +99,12 @@ export function RaiseHand() {
               {aud === "maker" && (
                 <div className={styles.field}>
                   <label htmlFor="r-lesson">Link to one lesson you&apos;re proud of</label>
-                  <input id="r-lesson" name="detail" type="url" placeholder="https://" required maxLength={2000}
-                    defaultValue={value("detail")} aria-invalid={!!fieldError("detail")} aria-describedby={describe("detail")} />
+                  <input id="r-lesson" type="url" placeholder="https://" required maxLength={2000}
+                    aria-invalid={!!fieldError("detail")} aria-describedby={describe("detail")} />
                   {errorOf("detail")}
                 </div>
               )}
-              <div className={styles.hp} aria-hidden="true">
-                <label htmlFor="r-website">Website</label>
-                <input id="r-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
-              </div>
-              {err && !err.fieldErrors && <p className={styles.ferr}>{err.message}</p>}
-              <button type="submit" className="btn btn-ink" style={{ alignSelf: "flex-start" }} disabled={pending}>
-                {pending && <span className={styles.spin} aria-hidden="true" />}
+              <button type="submit" className="btn btn-ink" style={{ alignSelf: "flex-start" }}>
                 Raise my hand
               </button>
             </form>

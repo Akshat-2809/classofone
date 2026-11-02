@@ -6,7 +6,7 @@ import { CONTACT_EMAIL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms of use — Class of One",
-  description: "The rules for using the Class of One website and raising your hand as a parent, teacher or curriculum maker.",
+  description: "The rules for using the Class of One website, including what its forms do and don't do.",
   alternates: { canonical: "/terms" },
 };
 
@@ -14,9 +14,9 @@ const mail = <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>;
 
 const SUMMARY: LegalSummaryRow[] = [
   { subject: "This website", answer: "It shows what we’re building. Classes aren’t on sale here, and plans may change." },
-  { subject: "Raising your hand", answer: "It puts you on our list. It isn’t a seat in a class, a job or a contract." },
+  { subject: "The forms", answer: <>They only show a message on your screen. What you type isn’t sent to us or stored, so to reach us, email {mail}.</> },
   { subject: "The examples", answer: "Aarav, Ms. Shah, the worksheet and the class chart are illustrations, not a real class." },
-  { subject: "Your lesson link", answer: "It stays yours. We only use it to get to know your work." },
+  { subject: "Your lesson link", answer: "The form doesn’t send it to us. If you email us one, it stays yours, and we only use it to get to know your work." },
   { subject: "If we disagree", answer: "Indian law applies, and the courts at Bengaluru decide." },
 ];
 
@@ -42,7 +42,7 @@ const SECTIONS: LegalSection[] = [
     title: "Who may use the Website",
     body: (
       <p>
-        Anyone may read it. To raise your hand or send us a message, you must be at least 18 and able to contract under the
+        Anyone may read it. To use our forms or email us, you must be at least 18 and able to contract under the
         Indian Contract Act, 1872. Parents raise their hands for their children. Children shouldn&apos;t fill in our forms.
       </p>
     ),
@@ -63,12 +63,15 @@ const SECTIONS: LegalSection[] = [
     title: "Raising your hand",
     body: (
       <>
-        <p>When you use our forms:</p>
+        <p>
+          The forms on this Website, including &ldquo;Raise my hand&rdquo;, the contact form and the footer email box, don&apos;t
+          send or store what you type. They show a message on your screen and nothing more. So:
+        </p>
         <ul>
-          <li>what you tell us must be true, and the email address must be your own;</li>
-          <li>you join a list. That doesn&apos;t create a contract or guarantee a class, a start date or a reply by any particular time;</li>
-          <li>we decide who we reach out to first, and when; and</li>
-          <li>you can leave at any time by writing to {mail}.</li>
+          <li>filling in a form doesn&apos;t reach us, and it doesn&apos;t add you to any list;</li>
+          <li>to reach us or to register your interest, email {mail}, and what you tell us must be true and the email address your own;</li>
+          <li>emailing us doesn&apos;t create a contract or guarantee a class, a start date or a reply by any particular time; and</li>
+          <li>we decide who we reach out to first, and when.</li>
         </ul>
       </>
     ),
@@ -80,7 +83,7 @@ const SECTIONS: LegalSection[] = [
       <ul>
         <li><b>Not an offer of work.</b> Applying to teach or to build lessons, including for the Curriculum Fellowship, isn&apos;t an offer of employment or engagement. Any arrangement, including any stipend, would be agreed separately in writing.</li>
         <li><b>The Fellowship details</b> on the Website, such as the stipend and the number of spots, describe our current plan and may change.</li>
-        <li><b>Your lesson stays yours.</b> If you send a link to a lesson, you keep your rights in it. You confirm you&apos;re allowed to share it, and we use it only to review your application.</li>
+        <li><b>Your lesson stays yours.</b> If you email us a link to a lesson, you keep your rights in it. You confirm you&apos;re allowed to share it, and we use it only to review your application.</li>
       </ul>
     ),
   },
@@ -93,7 +96,7 @@ const SECTIONS: LegalSection[] = [
         <ul>
           <li>use the Website for anything unlawful, fraudulent or harmful;</li>
           <li>pretend to be someone else, or sign anyone up without their permission;</li>
-          <li>send spam, or false, automated or bulk entries through our forms;</li>
+          <li>send us spam, or false, automated or bulk messages;</li>
           <li>scrape or copy the Website by automated means, except search engines that follow our robots.txt;</li>
           <li>probe it for weaknesses, break its security, or introduce harmful code; or</li>
           <li>copy, modify or reverse engineer it, except as the law allows.</li>
@@ -153,7 +156,7 @@ const SECTIONS: LegalSection[] = [
     title: "Sent out of class",
     body: (
       <p>
-        We may suspend or restrict access to the Website, or remove entries from our list, at any time, including to protect its
+        We may suspend or restrict access to the Website at any time, including to protect its
         security or if we reasonably believe you have broken these terms.
       </p>
     ),
@@ -185,7 +188,7 @@ const SECTIONS: LegalSection[] = [
           <li><b>Transfer:</b> you can&apos;t transfer your rights under these terms. We may transfer ours in a merger or sale.</li>
           <li><b>Beyond our control:</b> we aren&apos;t responsible for delays or failures caused by events outside our reasonable control.</li>
         </ul>
-        <p>Any questions? Write to {mail} or use our <Link href="/contact">contact page</Link>.</p>
+        <p>Any questions? Write to {mail}.</p>
       </>
     ),
   },

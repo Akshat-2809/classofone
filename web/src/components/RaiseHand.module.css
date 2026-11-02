@@ -6,17 +6,12 @@
 .field input:focus, .field select:focus { outline: none; border-bottom-color: var(--margin); }
 .field [aria-invalid="true"] { border-bottom-color: var(--red); }
 .ferr { font-size: 14px; font-weight: 700; color: var(--red); }
-.form :global(.btn):disabled { cursor: progress; transform: none; opacity: .85; }
-.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-.spin { width: 16px; height: 16px; border-radius: 50%; border: 2.5px solid rgba(255,255,255,.35); border-top-color: #FFFFFF; animation: spin .7s linear infinite; }
 .handwrap { position: relative; display: flex; align-items: center; justify-content: center; min-height: 300px; }
 .bighand { transform-origin: 50% 100%; transition: transform .8s var(--spring); }
 .up .bighand { transform: translateY(-30px) rotate(-6deg); }
 .star { position: absolute; top: 10%; right: 22%; transform: scale(0) rotate(-40deg); transition: transform .6s var(--spring) .4s; }
 .up .star { transform: scale(1) rotate(12deg); }
 .hint { position: absolute; bottom: 4px; font-family: var(--hand); font-size: 26px; color: var(--ink2); }
-
-@keyframes spin { to { transform: rotate(360deg); } }
 
 @media (max-width: 1000px) {
   .raise { grid-template-columns: minmax(0, 1fr); }

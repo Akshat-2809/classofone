@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { LegalDoc, type LegalSection, type LegalSummaryRow } from "@/components/LegalDoc";
 import s from "@/components/LegalDoc.module.css";
 import { LEGAL_LOCATION } from "@/lib/legal";
@@ -8,18 +7,18 @@ import { CONTACT_EMAIL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Privacy policy — Class of One",
   description:
-    "What Class of One asks parents, teachers and curriculum makers for, why, who sees it, and the rights you have under Indian law.",
+    "What happens to what you type into Class of One's forms, what we do with emails you send us, and the rights you have under Indian law.",
   alternates: { canonical: "/privacy" },
 };
 
 const mail = <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>;
 
 const SUMMARY: LegalSummaryRow[] = [
-  { subject: "What we ask", answer: "Your name, your email, whether you’re a parent, teacher or curriculum maker, and one detail that goes with it." },
-  { subject: "Why we ask", answer: "So we can reach out to you personally about Class of One. That’s it." },
-  { subject: "About your child", answer: "Only a class band, like “Class 5 – 8”. Never a name, a photo or anything else about them." },
+  { subject: "The forms", answer: "They check what you typed and show a message on your screen. What you type isn’t sent to us or stored." },
+  { subject: "To reach us", answer: <>Email {mail}. It’s the only way a message gets to us.</> },
+  { subject: "About your child", answer: "The form asks only for a class band, and that stays on your screen too. If you email us, please leave out your child’s name and other details." },
   { subject: "What we never do", answer: "Sell your data, use it for advertising, or follow you around the web." },
-  { subject: "Changing your mind", answer: <>Write to {mail} and we’ll take you off the list.</> },
+  { subject: "Changing your mind", answer: <>Write to {mail} and we’ll delete the emails you sent us.</> },
 ];
 
 const SECTIONS: LegalSection[] = [
@@ -33,7 +32,7 @@ const SECTIONS: LegalSection[] = [
           Nursery to Class 12, and we are at an early stage.
         </p>
         <p>
-          This policy covers this website: visiting it, raising your hand, and writing to us. When it comes to the data
+          This policy covers this website: visiting it, using its forms, and emailing us. When it comes to the data
           described here, we decide why and how it is used, so under Indian law we are the <b>Data Fiduciary</b> and you are
           the <b>Data Principal</b>. We follow the Information Technology Act, 2000 and the SPDI Rules, 2011, and we are
           aligning with the Digital Personal Data Protection Act, 2023 and its Rules of 2025 (the &ldquo;DPDP law&rdquo;) as
@@ -52,7 +51,7 @@ const SECTIONS: LegalSection[] = [
           over, and we don&apos;t knowingly collect personal data from children.
         </p>
         <ul>
-          <li>From parents, we ask only for a class band. Please don&apos;t send us your child&apos;s name or other details.</li>
+          <li>The parents&apos; form asks only for a class band, and that isn&apos;t sent to us either. If you email us, please don&apos;t include your child&apos;s name or other details.</li>
           <li>Aarav, the child in our examples, is an illustration, not a real pupil.</li>
           <li>If you think a child has sent us personal data, tell us and we&apos;ll delete it.</li>
         </ul>
@@ -68,27 +67,21 @@ const SECTIONS: LegalSection[] = [
     title: "What we collect",
     body: (
       <>
-        <h3>When you raise your hand</h3>
-        <ul>
-          <li><b>Everyone:</b> your name and email, and which of the three you are.</li>
-          <li><b>Parents:</b> your child&apos;s class band.</li>
-          <li><b>Teachers:</b> the subject you teach.</li>
-          <li><b>Curriculum makers:</b> a link to a lesson you&apos;re proud of.</li>
-        </ul>
-        <h3>When you write to us</h3>
-        <p>Your name, your email and your message, plus anything else you choose to include.</p>
-        <h3>When you submit a form</h3>
-        <ul>
-          <li><b>Your IP address,</b> stored only as a salted one-way hash, to stop spam and abuse.</li>
-          <li><b>Your browser&apos;s user-agent,</b> the short description of the browser it sends with the form.</li>
-        </ul>
+        <h3>When you fill in a form</h3>
+        <p>
+          Nothing. The &ldquo;Raise my hand&rdquo;, contact and footer email forms don&apos;t send or store what you type. Your
+          browser checks it and shows a message on your screen. It doesn&apos;t reach us, so we won&apos;t know you filled in a
+          form and we can&apos;t reply to it. To reach us, email {mail}.
+        </p>
+        <h3>When you email us</h3>
+        <p>Your email address, your name if you include it, your message, and anything else you choose to send.</p>
         <h3>When you visit</h3>
         <p>
           Our hosting provider keeps standard request logs (IP address, time, page, browser) for security and reliability. We
           use no advertising or analytics cookies, and our fonts are served from our own domain. What you pick under
-          &ldquo;I&apos;m a&rdquo; stays in your browser unless you send the form.
+          &ldquo;I&apos;m a&rdquo; stays in your browser.
         </p>
-        <h3>Please leave out</h3>
+        <h3>Please leave out of your emails</h3>
         <p>Passwords, bank or card details, health information and the like. We don&apos;t need them and don&apos;t want them.</p>
       </>
     ),
@@ -99,13 +92,11 @@ const SECTIONS: LegalSection[] = [
     body: (
       <>
         <ul>
-          <li><b>To reach out to you</b> about Class of One, as a parent, teacher or curriculum maker. Basis: your consent, given when you raise your hand.</li>
-          <li><b>To confirm you&apos;re on the list</b> with one short email. Basis: your consent.</li>
-          <li><b>To read and reply to your messages.</b> Basis: your consent, and data you gave us for that purpose.</li>
-          <li><b>To keep the website safe</b> from spam and abuse. Basis: the reasonable security practices the law requires.</li>
+          <li><b>To read and reply to your emails,</b> including about Class of One. Basis: your consent, and data you gave us for that purpose.</li>
+          <li><b>To keep the website safe</b> from abuse, using the hosting logs. Basis: the reasonable security practices the law requires.</li>
           <li><b>To meet legal duties</b> and answer lawful requests.</li>
         </ul>
-        <p>We make no automated decisions about you that have legal or similarly significant effects. A person reads every hand raised.</p>
+        <p>We make no automated decisions about you that have legal or similarly significant effects. A person reads every email.</p>
       </>
     ),
   },
@@ -116,15 +107,14 @@ const SECTIONS: LegalSection[] = [
       <>
         <p>Our team, and only where needed:</p>
         <ul>
-          <li><b>Vercel Inc.,</b> which hosts the website and carries form submissions.</li>
-          <li><b>Neon (Databricks, Inc.),</b> which hosts the database holding what you submit, your hashed IP and your browser information.</li>
-          <li><b>Resend (Plus Five Five, Inc.),</b> which sends our emails, so it handles your name and email, and the details you submitted in our internal notifications.</li>
+          <li><b>Vercel Inc.,</b> which hosts the website and keeps its request logs.</li>
+          <li><b>Our mailbox provider,</b> which holds the emails you send us.</li>
           <li><b>Professional advisers,</b> such as lawyers and auditors, under a duty of confidentiality.</li>
           <li><b>Authorities and courts,</b> where the law requires it or to protect our legal rights.</li>
           <li><b>A buyer or successor,</b> if we are part of a merger or sale, with this policy still protecting your data.</li>
         </ul>
         <p>
-          The first three may store or process data outside India. The DPDP law allows that except to countries the Central
+          The first two may store or process data outside India. The DPDP law allows that except to countries the Central
           Government restricts, and we won&apos;t transfer data to a restricted country.
         </p>
       </>
@@ -136,9 +126,8 @@ const SECTIONS: LegalSection[] = [
     body: (
       <>
         <ul>
-          <li><b>Hands raised:</b> until you ask us to remove you or we close the list, whichever comes first. We review the list at least every 24 months and delete what we no longer need.</li>
-          <li><b>Messages and emails:</b> up to 24 months after our last exchange.</li>
-          <li><b>Hashed IPs and browser information:</b> deleted along with the entry they belong to.</li>
+          <li><b>What you type into a form:</b> not kept, because it&apos;s never sent to us.</li>
+          <li><b>Emails:</b> up to 24 months after our last exchange.</li>
           <li><b>Hosting logs:</b> a short period, typically no more than 30 days.</li>
         </ul>
         <p>If you withdraw consent or ask us to erase your data, we will, unless the law requires us to keep it.</p>
@@ -152,10 +141,8 @@ const SECTIONS: LegalSection[] = [
       <>
         <p>We keep reasonable security practices, as section 43A of the IT Act and the SPDI Rules require:</p>
         <ul>
-          <li>data is encrypted in transit, and at rest with our database provider;</li>
-          <li>only the people who need access have it;</li>
-          <li>IP addresses are stored only as salted one-way hashes; and</li>
-          <li>our forms limit how much can be sent from one network.</li>
+          <li>the website is served over an encrypted connection; and</li>
+          <li>only the people who need access to our mailbox have it.</li>
         </ul>
         <p>
           Nothing online is perfectly secure. If a personal data breach happens, we will tell the people affected and the Data
@@ -180,7 +167,7 @@ const SECTIONS: LegalSection[] = [
           <li>complain to us, and then to the Data Protection Board of India if you aren&apos;t satisfied.</li>
         </ul>
         <p>
-          Email {mail} with the subject &ldquo;Privacy request&rdquo;, or use our <Link href="/contact">contact page</Link>. We
+          Email {mail} with the subject &ldquo;Privacy request&rdquo;. We
           may ask you to confirm who you are, and we&apos;ll respond within 30 days. The DPDP law also expects you not to
           impersonate anyone or file false complaints.
         </p>
@@ -220,7 +207,7 @@ const SECTIONS: LegalSection[] = [
     title: "When this policy changes",
     body: (
       <p>
-        We&apos;ll post the new version here with a new date. If a change is material, we&apos;ll email everyone on the list
+        We&apos;ll post the new version here with a new date. If a change is material, we&apos;ll say so clearly on this page
         before it takes effect.
       </p>
     ),
@@ -231,7 +218,7 @@ export default function PrivacyPage() {
   return (
     <LegalDoc
       title="Privacy policy"
-      note="what we ask, and why. no small print."
+      note="what we keep, and why. no small print."
       intro="Parents and teachers trusting us with their details is where Class of One starts. Here is exactly what we do with them."
       summary={SUMMARY}
       sections={SECTIONS}
