@@ -64,7 +64,7 @@ export function Footer() {
         <i style={{ left: "80%", width: 52, background: "#F6B7A9" }} />
       </div>
       <div className={styles.legal}>
-        <span>© 2026 Class of One</span>
+        <span>© 2026 Class of One. All rights reserved.</span>
         <Link href="/#top">Back to the top ↑</Link>
       </div>
     </footer>
